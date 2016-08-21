@@ -1,0 +1,43 @@
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Retrieve Authorization Keys</h4>
+      </div>
+      <div class="modal-body">
+        <p>Here, you can get your user authorization keys. These keys are used to authorize your meter to be able to upload data to TeraDPS.</p>
+        <div class="form">
+          <form>
+          <div class="form-group">
+              <h5>Email</h5>
+              <input type="text" class="form-control" ng-model="loginInfo.email" id="email" />
+          </div>
+          <div class="form-group">
+              <h5>Password</h5>
+              <input type="password" class="form-control" ng-model="loginInfo.password" id="password" />
+          </div>
+          <button type="submit" ng-click="fetchKeys()" class="btn btn-default btn-block">Get My Keys!</button>
+        </form>
+        </div>
+        <br />
+
+        <div class="row text-center" ng-show="authSuccess === true">
+          <span>UserId</span><br />
+          <h5>{{ userId }}</h5><br /><br />
+            <span>AuthToken</span><br />
+              <h5>{{ authToken }}</h5>
+          </div>
+
+          <div class="row text-center" ng-hide="authFail === false">
+            <h4 style="color: red;">Your request was rejected! <br /> Check to see you put in the right info!</h4>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" ng-click="close(false)" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ng-model="submit.newRanking.server"

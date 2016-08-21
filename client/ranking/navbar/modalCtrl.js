@@ -31,7 +31,7 @@ angular.module('tera').controller('ModalController', ['$scope', '$http', 'ModalS
 
     // Just provide a template url, a controller and call 'showModal'.
     ModalService.showModal({
-      templateUrl: "client/ranking/poison/modal.html",
+      templateUrl: "client/ranking/navbar/modal.html",
       controller: "YesNoController"
     }).then(function(modal) {
       // The modal object has the element built, if this is a bootstrap modal
