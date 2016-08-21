@@ -1,17 +1,7 @@
-// Template._loginButtonsLoggedInDropdown.events({
-//     'click #login-buttons-edit-profile': function(event) {
-//         Router.go('profileEdit');
-//     }
-// });
-
 angular.module('tera', ['angular-meteor', 'pascalprecht.translate', 'ui.router', 'angularModalService', 'accounts.ui',
   'ui.bootstrap', 'ngAnimate', 'angularUtils.directives.dirPagination'
 ]);
 
-// angular.module('tera').config(function($interpolateProvider) {
-//   $interpolateProvider.startSymbol('{[{');
-//   $interpolateProvider.endSymbol('}]}');
-// });
 angular.module('tera').directive('tooltip', function() {
   return {
     restrict: 'A',
@@ -26,23 +16,6 @@ angular.module('tera').directive('tooltip', function() {
     }
   };
 });
-
-angular.module('tera').directive('googleAd', [
-  '$timeout', function($timeout) {
-    return {
-      restrict: 'A',
-      link: function($scope, element, attr) {
-        return $timeout(function() {
-          var adsbygoogle, html, rand;
-          rand = Math.random();
-          html = "<ins class='adsbygoogle' style='display:inline-block;width:728px;height:90px' data-ad-client='ca-pub-5807016128854236' data-ad-slot='1021384904' data-ad-region='page-" + rand + "'></ins>";
-          $(element).append(html);
-          return (adsbygoogle = window.adsbygoogle || []).push({});
-        });
-      }
-    };
-  }
-]);
 
 angular.module('tera').filter('unique', function() {
   return function(collection, keyname) {
@@ -139,48 +112,4 @@ angular.module('tera').factory('SettingsService', function() {
     };
 
     return settings;
-});
-
-angular.module('tera').run(function($rootScope, $anchorScroll) {
-  // $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-  //   if (toState.data.auth === 'Admin') {
-  //     console.log(Meteor.userId());
-  //     // Meteor.userId().emails[0].address !== "nickd2312@gmail.com"
-  //     // "AAuixCa9qWMdoG3wc" - Localhost ID
-  //     // "2K3AzoTwEGtAQBZDf" - Server ID
-  //     // || Meteor.userId() !== 'crdChGPz6PndHvMYh'
-  //     if (Meteor.userId() === null) {
-  //       console.log(Meteor.userId());
-  //       sweetAlert({
-  //         title: "Watch where you walkin.",
-  //         text: "Nigga.",
-  //         type: "error",
-  //         confirmButtonColor: "#000000",
-  //         confirmButtonText: "Oh shit!",
-  //         closeOnConfirm: true
-  //       });
-  //       event.preventDefault();
-  //       return false;
-  //     }
-  //   }
-  //
-  //   if (toState.data.auth === 'User') {
-  //     console.log(Meteor.userId());
-  //     // Meteor.userId().emails[0].address !== "nickd2312@gmail.com"
-  //     // "AAuixCa9qWMdoG3wc" - Localhost ID
-  //     // "2K3AzoTwEGtAQBZDf" - Server ID
-  //     if (Meteor.userId() === null) {
-  //       sweetAlert({
-  //         title: "Only registered users can submit data.",
-  //         text: "Please log in or register an account.",
-  //         type: "error",
-  //         confirmButtonColor: "#000000",
-  //         confirmButtonText: "OK",
-  //         closeOnConfirm: true
-  //       });
-  //       event.preventDefault();
-  //       return false;
-  //     }
-  //   }
-  // })
 });
