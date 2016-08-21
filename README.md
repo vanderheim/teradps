@@ -21,7 +21,7 @@ AngularJS
 1. You'll need to install Meteor to run this app. Install it with `curl https://install.meteor.com | /bin/sh`
 2. Clone this repo.
 3. Navigate to the repo folder and type meteor in your terminal to start the app. After it's finished, you can access it at http://localhost:3000
-4. A single encounter record is added for demonstration purposes on first startup.
+4. A sample encounter record is added for demonstration purposes on first startup.
 
 # For DPS Meter Developers
 
