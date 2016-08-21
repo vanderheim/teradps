@@ -1,0 +1,275 @@
+<div ng-show="rankDetailsParty.rank.partyDps === undefined" class='container Aligner-item'>
+    <div class="row">
+      <div class="col-sm-12">
+        <center>
+    <img src="/asset/1757300.png" />
+    <br />
+    <br />
+    <span class="text-headline">NOW LOADING...</span> <span><i class="fa fa-cog fa-spin fa-2x fa-fw"></i></span>
+    <br />
+    <br />
+    </center>
+  </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-sm-12">
+  <span>Been here longer than a minute? Your record may have expired!</span>
+  <br />
+  <span>Please check your links to see if they are correct.</span>
+</div>
+</div>
+</div>
+<div ng-hide="rankDetailsParty.rank.partyDps === undefined" class='container'>
+  <div class="row">
+    <center>
+      <img src="/asset/tdps3.png">
+    </center>
+  </div>
+  <br />
+  <hr>
+  <br />
+  <div>
+  <center>
+    <div class="row text-center">
+      <!-- <p class="text-jumbo">{{ rankDetailsParty.rank.expire }}</p> -->
+      <img ng-repeat="member in rankDetailsParty.rank.members" style="height:64px;width:64px;" ng-src="{{ rankDetailsParty.getClassImage(member.playerClass) }}" title="{{ member.playerName }}" data-toggle="tooltip" tooltip>
+      <div ng-repeat="member in rankDetailsParty.rank.members">
+      <img style="height:270px;width:270px;" ng-show="{{ buff.Key === '830012' }}" ng-src="/asset/derp.png" ng-repeat="buff in member.buffUptime" title="{{ member.playerName }} was detected as using the Celestial Arena bug to inflate their damage." data-toggle="tooltip" tooltip>
+    </div>
+    </div>
+    <!-- <div class="row text-center">
+    <span ng-repeat="member in rankDetailsParty.rank.members" class="text-uppercase text-headline">{{ member.playerName }} </span><br />
+  </div> -->
+  </center>
+  <br/>
+  <!-- <p class="lead text-center text-uppercase">{{ rankDetailsParty.rank.mainServer }} · {{ rankDetailsParty.getBoss(rankDetailsParty.rank.bossId, rankDetailsParty.rank.areaId) }} · {{ rankDetailsParty.rank.createdOn }}</p> -->
+  <div class="row text-center">
+    <div class="col-sm-6">
+      <img ng-src="/asset/attack.png"/><br/>
+    </div>
+    <div class="col-sm-6">
+      <img ng-src="/asset/boss.png"/><br/>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-sm-6 text-headline2">
+      <span class="text-center text-headline2">{{ rankDetailsParty.rank.partyDps.toLocaleString() }}
+        DPS</span>
+    </div>
+    <div class="col-sm-6 text-headline2">
+      <span class="text-center text-headline2 text-uppercase">{{ rankDetailsParty.getBoss(rankDetailsParty.rank.bossId, rankDetailsParty.rank.areaId) }}</span>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-10">
+      <table class="table">
+        <thead>
+          <th>Name</th>
+          <th>Class</th>
+          <th>Stances & Consumables Used</th>
+          <th>Server</th>
+          <th>Crit</th>
+          <th>Total</th>
+          <th>DPS</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="member in rankDetailsParty.rank.members | orderBy: '-playerDps'">
+            <td style="vertical-align:middle"><i ng-show="member.premium === true" class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i> {{ member.playerName }}</td>
+            <td style="vertical-align:middle"><img ng-src="{{rankDetailsParty.getClassImage(member.playerClass)}}" class="item-resize" title="{{ member.playerClass }}" data-toggle="tooltip" tooltip></td>
+            <td style="vertical-align:middle"><img class="item-resize" ng-src="/asset/dpser.png" ng-show="member.playerClass === 'Brawler' && member.aggro < 30 || member.playerClass === 'Lancer' && member.aggro < 30" title="This player was detected to be using a DPS/backcrit-focused setup instead of tanking-focused setup." data-toggle="tooltip" tooltip>
+              <img class="item-resize" ng-src="/asset/tanker.png" ng-show="member.playerClass === 'Brawler' && member.aggro > 30 || member.playerClass === 'Lancer' && member.aggro > 30" title="This player was detected to be the primary tank of the party." data-toggle="tooltip" tooltip>
+              <img ng-repeat="buff in member.buffUptime" ng-show="{{ buff.Key === '8888889' && buff.Value > 20 }}" style="height:40px;width:40px;" ng-src="/asset/items/slaying.png" title="This player was detected to be using a Slaying build." data-toggle="tooltip" tooltip>
+              <img ng-src="/asset/consumable/charm.png" title="Power/Enduring/Infused Charm" data-toggle="tooltip" tooltip>
+              <img style="height:40px;width:40px;" ng-hide="{{ rankDetailsParty.getItemIcon(buff.Key) === false }}" ng-src="/asset/items/{{ rankDetailsParty.getItemIcon(buff.Key) }}.png" ng-repeat="buff in member.buffUptime" title="{{ rankDetailsParty.getItemIcon(buff.Key) }} : {{ buff.Value }}% Uptime" data-toggle="tooltip" tooltip></td>
+            <!-- <td><p ng-repeat="buff in member.buffUptime">{{ buff.Key }}, </p></td> -->
+            <td style="vertical-align:middle">{{ member.playerServer}}</td>
+            <td style="vertical-align:middle">{{ member.playerAverageCritRate }}%</td>
+            <td style="vertical-align:middle">{{ member.playerTotalDamagePercentage }}%</td>
+            <td style="vertical-align:middle">{{ member.playerDps.toLocaleString() }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-2">
+      <table class="table">
+        <thead>
+          <th>Debuff</th>
+          <th>Uptime</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="debuff in rankDetailsParty.rank.debuffUptime">
+            <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getDebuffIcon(debuff.Key) === false }}"><img class="item-resize" ng-src="/asset/debuffs/{{ rankDetailsParty.getDebuffIcon(debuff.Key) }}.png" title="{{ rankDetailsParty.getDebuffIcon(debuff.Key) }}" data-toggle="tooltip" tooltip></td>
+            <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getDebuffIcon(debuff.Key) === false }}">{{ debuff.Value }}%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="well">
+      <div class="row text-center">
+        <!-- <div class="col-sm-6">
+          <img style="height:50px;width:50px;" ng-src="/asset/world.png"/>
+        </div> -->
+        <div class="col-sm-12">
+          <img style="height:50px;width:50px;" ng-src="/asset/bridge.png"/>
+        </div>
+      </div>
+      <div class="row text-center">
+        <!-- <div class="col-sm-12 push-down">
+          <span class="text-generalstat">{{ rankDetailsParty.rank.mainServer }}</span>
+        </div> -->
+        <div class="col-sm-12 push-down">
+          <span class="text-generalstat">{{ rankDetailsParty.getDungeon(rankDetailsParty.rank.areaId) }}</span>
+        </div>
+      </div>
+
+      <div class="row text-center">
+        <div class="col-sm-6 push-down">
+          <img style="height:50px;width:50px;" ng-src="/asset/stopwatch.png"/>
+        </div>
+        <div class="col-sm-6 push-down">
+          <img style="height:50px;width:50px;" ng-src="/asset/all-for-one.png"/>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-sm-6 push-down">
+          <span class="text-generalstat push-down">Fight Duration:
+            {{ rankDetailsParty.hhmmss(rankDetailsParty.rank.fightDuration) }}</span>
+        </div>
+        <div class="col-sm-6 push-down">
+          <span class="text-generalstat push-down">Party DPS:
+            {{ rankDetailsParty.rank.partyDps.toLocaleString() }}</span>
+        </div>
+      </div>
+
+      <div class="row text-center">
+        <div class="col-sm-6 push-down">
+          <img style="height:50px;width:50px;" ng-src="/asset/calendar.png"/>
+        </div>
+        <div class="col-sm-6 push-down">
+          <img style="height:50px;width:50px;" ng-src="/asset/histogram.png"/>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-sm-6 push-down">
+          <span class="text-generalstat push-down">Submitted on
+            {{ rankDetailsParty.rank.trueCreatedOn }}.</span>
+        </div>
+        <div class="col-sm-6 push-down">
+          <span class="text-generalstat push-down">Submitted by
+            {{ rankDetailsParty.rank.meterName }}
+            v{{ rankDetailsParty.rank.meterVersion }}.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="alert alert-danger col-sm-6 col-sm-offset-3">
+      <span style="color: white;" ng-repeat="debuff in rankDetailsParty.rank.debuffUptime" ng-show="{{ debuff.Key === '8888888' }}"><img style="height:50px;width:50px;" ng-src="/asset/enraged.png"/>
+        {{ rankDetailsParty.getBoss(rankDetailsParty.rank.bossId, rankDetailsParty.rank.areaId) }}
+        was enraged for
+        <span style="vertical-align:middle" class="text-headline">{{ debuff.Value }}%</span>
+        of the fight.</span>
+    </div>
+  </div>
+  <uib-accordion close-others="false">
+    <uib-accordion-group panel-class="well well-sm" ng-repeat="member in rankDetailsParty.rank.members | orderBy: '-playerDps'">
+      <uib-accordion-heading>
+        <div class="row">
+          <div class="col-sm-10">
+            <p class="text-semi-jumbo text-uppercase"><img ng-show="{{ $index === 0 }}" style="height:64px;width:64px;padding: 0px 0px 15px 0px;" class="push-upwards" ng-src="/asset/laurel-crown1.png"/>
+              {{ member.playerName }}
+              <small>{{ member.playerDps.toLocaleString() }}
+                DPS</small>
+              <img ng-hide="{{member.playerDeaths >= 5}}" ng-repeat="i in member.playerDeaths | range" style="height:30px;width:30px;" ng-src="/asset/skull-crossed-bones.png"/>
+              <img ng-show="{{member.playerDeaths >= 5}}" ng-src="/asset/derp.png"/></p>
+          </div>
+          <div class="col-sm-2">
+            <i ng-show="member.premium === true" class="fa fa-star fa-3x fa-spin" style="position: relative; bottom: -10px; right: -40px;" aria-hidden="true"></i> <img class="pull-right" style="height:64px;width:64px;" ng-src="{{ rankDetailsParty.getClassImage(member.playerClass) }}"/>
+          </div>
+        </div>
+      </uib-accordion-heading>
+      <div class="row text-center">
+        <div ng-repeat="buff in member.buffUptime" ng-show="{{ buff.Key === '8888889' && buff.Value > 20 }}" class="alert alert-danger col-sm-6 col-sm-offset-3">
+          <span style="color: white;"><img style="height:50px;width:50px;" ng-src="/asset/items/slaying.png"/>
+            {{ member.playerName }}
+            stayed under 50% HP for
+            <span style="vertical-align:middle" class="text-headline">{{ buff.Value }}%</span>
+            of the fight.</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+          <table class="table table-hover">
+            <thead>
+              <th>Skill</th>
+              <th>Name</th>
+              <th>Hits</th>
+              <th>Total Damage</th>
+              <th>Crit Rate</th>
+              <th>Total %</th>
+              <th>Highest Crit</th>
+              <th>Average Crit</th>
+              <th>Average White</th>
+            </thead>
+            <tbody>
+              <tr ng-repeat="breakdown in member.skillLog | orderBy: '-skillTotalDamage'">
+                <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getIcon(breakdown.skillId, member.playerClass) === false }}"><img style="height:40px;width:40px;" ng-src="/asset/skills/{{ member.playerClass }}/{{ rankDetailsParty.getIcon(breakdown.skillId, member.playerClass).ref }}.png"/></td>
+                <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getIcon(breakdown.skillId, member.playerClass) === false }}">{{ rankDetailsParty.getIcon(breakdown.skillId, member.playerClass).name | translate }}</td>
+                <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getIcon(breakdown.skillId, member.playerClass) === false }}">{{ breakdown.skillHits }}</td>
+                <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getIcon(breakdown.skillId, member.playerClass) === false }}">{{ breakdown.skillTotalDamage.toLocaleString() }}</td>
+                <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getIcon(breakdown.skillId, member.playerClass) === false }}">{{ breakdown.skillCritRate }}%</td>
+                <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getIcon(breakdown.skillId, member.playerClass) === false }}">{{ breakdown.skillDamagePercent.toLocaleString() }}%</td>
+                <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getIcon(breakdown.skillId, member.playerClass) === false }}">{{ breakdown.skillHighestCrit.toLocaleString() }}</td>
+                <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getIcon(breakdown.skillId, member.playerClass) === false }}">{{ breakdown.skillAverageCrit.toLocaleString() }}</td>
+                <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getIcon(breakdown.skillId, member.playerClass) === false }}">{{ breakdown.skillAverageWhite.toLocaleString() }}</td>
+                <!-- <td>{{ breakdown.skillId }}</td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-2">
+          <table class="table">
+            <thead>
+              <th>Buff</th>
+              <th>Uptime</th>
+            </thead>
+            <tbody>
+              <tr ng-repeat="buff in member.buffUptime">
+                <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getBuffIcon(buff.Key) === false || buff.Value === 0 }}"><img ng-src="/asset/buffs/{{ rankDetailsParty.getBuffIcon(buff.Key).ref }}.png" title="{{ rankDetailsParty.getBuffIcon(buff.Key).name }}" data-toggle="tooltip" tooltip></td>
+                <td style="vertical-align:middle" ng-hide="{{ rankDetailsParty.getBuffIcon(buff.Key) === false || buff.Value === 0 }}">{{ buff.Value }}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div ng-hide="{{ member.playerDeaths == '0' }}" class="row text-center">
+        <div class="alert alert-info col-sm-12">
+          <span style="color: white; vertical-align:middle;"><img style="height:50px;width:50px;" ng-src="/asset/skull-crossed-bones.png"/>
+            {{ member.playerName }}
+            died
+            <span style="vertical-align:middle" class="text-headline">{{ member.playerDeaths }}</span>
+            times, and spent
+            <span style="vertical-align:middle" class="text-headline">{{ rankDetailsParty.deathCalc(member.playerDeathDuration, rankDetailsParty.rank.fightDuration) }}%</span>
+            of the fight on the floor.</span>
+        </div>
+      </div>
+    </uib-accordion-group>
+  </uib-accordion>
+  <!-- <hr>
+  <uib-accordion>
+    <uib-accordion-group panel-class="well well-sm">
+      <uib-accordion-heading>
+        <h3 class="text-uppercase">CLICK ME TO VIEW JSON OBJECT FOR THIS ENCOUNTER</h3>
+      </uib-accordion-heading>
+      <div class="row">
+        <pre>
+        {{ rankDetailsParty.rank | json }}
+      </pre>
+      </div>
+    </uib-accordion-group>
+  </uib-accordion> -->
+</div>
+</div>

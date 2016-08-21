@@ -1,0 +1,415 @@
+<head>
+  <base href="/">
+  <title>TeraDPS - DPS visualization and tracking system for Tera Online</title>
+  <meta name="description" content="An interactive real-time performance tracker for Tera Online.">
+  <meta name="keywords" content="Tera, Tera Online, Tera DPS, DPS, DPS Tracker, MMO, MMORPG, Game">
+  <link rel="icon" sizes="16x16 32x32" href="/favicon.ico?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='/main.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/nga.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/animate.css"/>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head>
+<body ng-app="tera" class="Site">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li>
+          <a ui-sref="home"><img style="height:20px;width:76px;" src="/asset/tdps3.png"></a>
+        </li>
+        <li>
+          <a href="#" class="glow" ui-sref="about">{{ 'About' | translate }}</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle glow" data-toggle="dropdown" role="button">
+            Guides<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu multi-level" role="menu">
+            <li>
+              <a href="#" type="button" ng-controller="ModalController" ng-click="showAModal()">Get Meter Info</a>
+            </li>
+            <li>
+              <a href="#" ui-sref="req">Submission Guidelines</a>
+            </li>
+              <li>
+                <a href="#" ui-sref="setup">Uploading/Setup Guide</a>
+              </li>
+              <li>
+                <a href="#" ui-sref="toprank">Top Ranker System Guide</a>
+              </li>
+            </ul>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle glow" data-toggle="dropdown" role="button">
+              Dungeons<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu multi-level" role="menu">
+                <li class="dropdown-header">Secrets & Shadows</li>
+                <li class="dropdown-submenu">
+                  <a tabindex="-1" href="#">Demokron Factory Normal (DFNM)</a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a ui-sref="bossRanking({ boss: '767.46704' })">Verno</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu">
+                  <a tabindex="-1" href="#">Demokron Factory Hard (DFHM)</a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a ui-sref="bossRanking({ boss: '467.46701' })">Nightmare Vera</a>
+                    </li>
+                    <li>
+                      <a ui-sref="bossRanking({ boss: '467.46703' })">Nightmare Odon</a>
+                    </li>
+                    <li>
+                      <a ui-sref="bossRanking({ boss: '467.46704' })">Nightmare Verno</a>
+                    </li>
+                  </ul>
+                </li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">Shadow Sanguinary Normal (SSNM)</a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a ui-sref="bossRanking({ boss: '768.1000' })">Pahoegar</a>
+                  </li>
+                  <li>
+                    <a ui-sref="bossRanking({ boss: '768.3000' })">Imperator</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">Shadow Sanguinary Hard (SSHM)</a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a ui-sref="bossRanking({ boss: '468.1000' })">Nightmare Pahoegar</a>
+                  </li>
+                  <li>
+                    <a ui-sref="bossRanking({ boss: '468.3000' })">Nightmare Imperator</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown-header">Aces Wild</li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">Manglemire (MM)</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="bossRanking({ boss: '470.1000' })">Manglemore</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">Dreadspire III (DS3)</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="bossRanking({ boss: '886.88518' })">Hrathgol</a>
+                </li>
+                <!-- <li>
+                  <a ui-sref="bossRankingParty({ boss: '886.88517' })">Melkatran</a>
+                </li> -->
+                <li>
+                  <a ui-sref="bossRanking({ boss: '886.88516' })">Lokmar Sorgalur</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '886.88519' })">Meldita</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '886.88601' })">Koleogg</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '886.88602' })">Kaprima</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '886.885200' })">Shandra Manaya</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-header">KTERA Sorcerer Revamp</li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">Sky Cruiser Endeavor Hard (SCHM)</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="bossRanking({ boss: '916.91650' })">Nightmare Putrion</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '916.91606' })">Nightmare Perimos</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '916.1000' })">Nightmare Darkan</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">Lilith's Castle Normal (LCNM)</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="bossRanking({ boss: '769.76901' })">Nightmare</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '769.76902' })">Waxpider</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '769.76903' })">Lilith</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">Lilith's Castle Hard (LCHM)</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="bossRanking({ boss: '969.76901' })">Nightmare Nightmare</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '969.76902' })">Nightmare Waxpider</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '969.76903' })">Nightmare Lilith</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">Rakelith's Ruins Normal (RRNM)</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="bossRanking({ boss: '770.1000' })">Revived Atrocitas</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '770.2000' })">Revived Malgarios</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '770.3000' })">Rakelith</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">Rakelith's Ruins Hard (RRHM)</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="bossRanking({ boss: '970.1000' })">Revived Nightmare Atrocitas</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '970.2000' })">Revived Nightmare Malgarios</a>
+                </li>
+                <li>
+                  <a ui-sref="bossRanking({ boss: '970.3000' })">Nightmare Rakelith</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle glow" data-toggle="dropdown" role="button">
+            Servers<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu multi-level" role="menu">
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">North America (NA)</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Mount Tyrannas' })">Mount Tyrannas</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Lake of Tears' })">Lake Of Tears</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Valley of Titans' })">Valley Of Titans</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Tempest Reach' })">Tempest Reach</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Celestial Hills' })">Celestial Hills</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Highwatch' })">Highwatch</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Ascension Valley' })">Ascension Valley</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">Europe (EU)</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Killian' })">Killian</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Fraya' })">Fraya</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Hasmina' })">Hasmina</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Elinu' })">Elinu</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Icaruna' })">Icaruna</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Veritas' })">Veritas</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Akasha' })">Akasha</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Arcadia' })">Arcadia</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Kaidun' })">Kaidun</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">Russia (RU)</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Арун' })">Арун</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Кайатор' })">Кайатор</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Арборея' })">Арборея</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Лоркада' })">Лоркада</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Балдера' })">Балдера</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Эссения' })">Эссения</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'Вестония' })">Вестония</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">Korea (KR)</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="serverRanking({ server: '벨릭의 은총' })">벨릭의 은총</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: '세렌의 용기' })">세렌의 용기</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: '아룬의 영광' })">아룬의 영광</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: '발더의 지혜' })">발더의 지혜</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: '프레이아의 수호' })">프레이아의 수호</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">Japan (JP)</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="serverRanking({ server: 'ユリアン' })">ユリアン</a>
+                </li>
+                <li>
+                  <a ui-sref="serverRanking({ server: 'エリーヌ' })">エリーヌ</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">Taiwan (TW)</a>
+                <ul class="dropdown-menu">
+                  <li><a ui-sref="serverRanking({ server: '提雅拉尼亞' })">提雅拉尼亞</a></li>
+                </ul>
+              </li>
+
+          </ul>
+
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle glow" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Classes<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-header">Tank</li>
+            <li>
+              <a ui-sref="classRanking({ class: 'Lancer' })">Lancer</a>
+            </li>
+            <li>
+              <a ui-sref="classRanking({ class: 'Brawler' })">Brawler</a>
+            </li>
+
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">DPS</li>
+            <li>
+              <a ui-sref="classRanking({ class: 'Warrior' })">Warrior</a>
+            </li>
+            <li>
+              <a ui-sref="classRanking({ class: 'Slayer' })">Slayer</a>
+            </li>
+            <li>
+              <a ui-sref="classRanking({ class: 'Berserker' })">Berserker</a>
+            </li>
+
+            <li>
+              <a ui-sref="classRanking({ class: 'Archer' })">Archer</a>
+            </li>
+            <li>
+              <a ui-sref="classRanking({ class: 'Reaper' })">Reaper</a>
+            </li>
+            <li>
+              <a ui-sref="classRanking({ class: 'Sorcerer' })">Sorcerer</a>
+            </li>
+            <li>
+              <a ui-sref="classRanking({ class: 'Gunner' })">Gunner</a>
+            </li>
+            <li>
+              <a ui-sref="classRanking({ class: 'Ninja' })">Ninja</a>
+            </li>
+
+
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Healer</li>
+              <li><a ui-sref="classRanking({ class: 'Priest' })">Priest</a></li>
+              <li><a ui-sref="classRanking({ class: 'Mystic' })">Mystic</a></li>
+
+          </ul>
+        </li>
+          </ul>
+        </li>
+      </ul>
+      <navbar></navbar>
+    </div>
+  </nav>
+  <div class="Site-content Aligner">
+    <div class="view-slide-in" ui-view></div>
+  </div>
+    <footer>
+     <hr />
+      <center>
+        <span style="padding-bottom:10px;">TeraDPS &copy; 2016
+        </span>
+        <div id="navigation" style="padding-bottom:5px;" class="text-uppercase">
+        <ul>
+          <li><a ui-sref="home"><span style="font-size:14px;">Home</span></a></li>
+          <li><a ui-sref="about"><span style="font-size:14px;">About</span></a></li>
+          <li><a ui-sref="setup"><span style="font-size:14px;">Setup</span></a></li>
+          <li><a ui-sref="req"><span style="font-size:14px;">Requirements</span></a></li>
+          <!-- <li><a ui-sref="premium"><span style="font-size:14px;">Premium</span></a></li> -->
+        </ul>
+    </div>
+      </center>
+    </footer>
+    <!-- <div class="row text-center">
+      <span class="btn btn-default" ng-controller="translateCtrl" ng-click="changeLanguage('meme')">Meme</span>
+<span class="btn btn-default" ng-controller="translateCtrl" ng-click="changeLanguage('en')">English</span>
+    </div> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.11.0/angular-translate.js"></script>
+  <script type="text/javascript" src="/angular-modal-service.js"></script>
+  <script type="text/javascript" src="/ui-bootstrap-tpls.min.js"></script>
+</body>

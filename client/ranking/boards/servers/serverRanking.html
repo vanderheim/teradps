@@ -1,0 +1,292 @@
+<div class='container'>
+    <div class="row text-center">
+      <span class="text-branding text-region">{{ serverRanking.getRegion(serverRanking.searchServer).toUpperCase() }}</span>
+      <br>
+      <span class="text-branding text-jumbo highlight">{{ serverRanking.searchServer.toUpperCase() }}</span>
+    </div>
+      <br/>
+  <div class='well'>
+    <center>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="player">PLAYERS</label>
+          <div class="input-group input-group-sm col-sm-6">
+            <input type="text" id="player" class="form-control" ng-model="serverRanking.playerSetting" placeholder="Type player name here."/>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="boss">BOSSES</label>
+          <div class="input-group input-group-sm col-sm-6">
+            <select class="form-control" id="boss" ng-model="serverRanking.bossSetting">
+              <option value="">All Bosses</option>
+              <!-- <optgroup label="Forsaken Island Hard Mode (FIHM)">
+                <option value="759.1001">Nightmare Rokdos</option>
+                <option value="759.1002">Nightmare Viyor</option>
+                <option value="759.1003">Nightmare Desolarus</option>
+              </optgroup> -->
+              <optgroup label="Dreadspire III (DS3)">
+                <option value="886.88518">Floor 16: Hrathgol</option>
+                <option value="886.88516">Floor 18: Lokmar Sorgalur</option>
+                <option value="886.88519">Floor 19: Meldita</option>
+                <option value="886.88601">Floor 20: Koleogg</option>
+                <option value="886.88602">Floor 21: Kaprima</option>
+                <option value="886.885200">Floor 22: Shandra Manaya</option>
+              </optgroup>
+              <optgroup label="Demokron Factory Normal (DFNM)">
+                <option value="767.46704">Verno</option>
+              </optgroup>
+              <optgroup label="Demokron Factory Hard (DFHM)">
+                <option value="467.46701">Nightmare Vera</option>
+                <option value="467.46703">Nightmare Odon</option>
+                <option value="467.46704">Nightmare Verno</option>
+              </optgroup>
+              <optgroup label="Shadow Sanguinary Normal (SSNM)">
+                <option value="768.1000">Pahoegar</option>
+                <option value="768.3000">Imperator</option>
+              </optgroup>
+              <optgroup label="Shadow Sanguinary Hard (SSHM)">
+                <option value="468.1000">Nightmare Pahoegar</option>
+                <option value="468.3000">Nightmare Imperator</option>
+              </optgroup>
+              <optgroup label="Manglemire (MM)">
+                <option value="470.1000">Manglemore</option>
+              </optgroup>
+              <optgroup label="Sky Cruiser Endeavor (SCHM)">
+                <option value="916.91650">Nightmare Putrion</option>
+                <option value="916.91606">Nightmare Perimos</option>
+                <option value="916.1000">Nightmare Darkan</option>
+              </optgroup>
+              <optgroup label="Lilith's Castle Normal (LLNM)">
+                <option value="769.76901">Nightmare</option>
+                <option value="769.76902">Waxpider</option>
+                <option value="769.76903">Lilith</option>
+              </optgroup>
+              <optgroup label="Lilith's Castle Hard (LLHM)">
+                <option value="969.76901">Nightmare Nightmare</option>
+                <option value="969.76902">Nightmare Waxpider</option>
+                <option value="969.76903">Nightmare Lilith</option>
+              </optgroup>
+              <optgroup label="Rakelith's Ruins Normal (RRNM)">
+                <option value="770.1000">Revived Atrocitas</option>
+                <option value="770.2000">Revived Malgarios</option>
+                <option value="770.3000">Rakelith</option>
+              </optgroup>
+              <optgroup label="Rakelith's Ruins Hard (RRHM)">
+                <option value="970.1000">Revived Nightmare Atrocitas</option>
+                <option value="970.2000">Revived Nightmare Malgarios</option>
+                <option value="970.3000">Nightmare Rakelith</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="slaying">SLAYING</label>
+          <br />
+          <input id="slaying" type="image" style="height:40px;width:40px;" ng-show="serverRanking.slayingSetting === 'Y'" src="/asset/items/slaying.png" ng-click="serverRanking.chooseSlaying('N')">
+          <input id="slaying" type="image" style="height:40px;width:40px;" ng-show="serverRanking.slayingSetting === 'N'" src="/asset/tanker.png" ng-click="serverRanking.chooseSlaying('')">
+          <input id="slaying" type="image" style="height:40px;width:40px;" ng-show="serverRanking.slayingSetting === ''" src="/asset/dpser.png" ng-click="serverRanking.chooseSlaying('Y')">
+        </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-9">
+          <p class="highlight">CLASSES</p>
+          <center>
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting !== 'Brawler' && serverRanking.classSettingTemp !== 'Brawler'" src="/asset/classes/brawler-de.png" ng-click="serverRanking.chooseClass('Brawler')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting === 'Brawler' || serverRanking.classSettingTemp === 'Brawler'" src="/asset/classes/brawler-sel3.png" ng-click="serverRanking.chooseClass('Brawler')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting !== 'Berserker' && serverRanking.classSettingTemp !== 'Berserker'" ng-src="/asset/classes/berserker-de.png" ng-click="serverRanking.chooseClass('Berserker')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting === 'Berserker' || serverRanking.classSettingTemp === 'Berserker'" ng-src="/asset/classes/berserker-sel.png" ng-click="serverRanking.chooseClass('Berserker')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting !== 'Lancer' && serverRanking.classSettingTemp !== 'Lancer'" ng-src="/asset/classes/lancer-de.png" ng-click="serverRanking.chooseClass('Lancer')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting === 'Lancer' || serverRanking.classSettingTemp === 'Lancer'" ng-src="/asset/classes/lancer-sel.png" ng-click="serverRanking.chooseClass('Lancer')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting !== 'Warrior' && serverRanking.classSettingTemp !== 'Warrior'" ng-src="/asset/classes/warrior-de.png" ng-click="serverRanking.chooseClass('Warrior')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting === 'Warrior' || serverRanking.classSettingTemp === 'Warrior'" ng-src="/asset/classes/warrior-sel.png" ng-click="serverRanking.chooseClass('Warrior')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting !== 'Slayer' && serverRanking.classSettingTemp !== 'Slayer'" ng-src="/asset/classes/slayer-de.png" ng-click="serverRanking.chooseClass('Slayer')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting === 'Slayer' || serverRanking.classSettingTemp === 'Slayer'" ng-src="/asset/classes/slayer-sel.png" ng-click="serverRanking.chooseClass('Slayer')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting !== 'Archer' && serverRanking.classSettingTemp !== 'Archer'" ng-src="/asset/classes/archer-de.png" ng-click="serverRanking.chooseClass('Archer')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting === 'Archer' || serverRanking.classSettingTemp === 'Archer'" ng-src="/asset/classes/archer-sel.png" ng-click="serverRanking.chooseClass('Archer')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting !== 'Reaper' && serverRanking.classSettingTemp !== 'Reaper'" ng-src="/asset/classes/reaper-de.png" ng-click="serverRanking.chooseClass('Reaper')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting === 'Reaper' || serverRanking.classSettingTemp === 'Reaper'" ng-src="/asset/classes/reaper-sel.png" ng-click="serverRanking.chooseClass('Reaper')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting !== 'Gunner' && serverRanking.classSettingTemp !== 'Gunner'" ng-src="/asset/classes/gunner-de.png" ng-click="serverRanking.chooseClass('Gunner')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting === 'Gunner' || serverRanking.classSettingTemp === 'Gunner'" ng-src="/asset/classes/gunner-sel.png" ng-click="serverRanking.chooseClass('Gunner')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting !== 'Sorcerer' && serverRanking.classSettingTemp !== 'Sorcerer'" ng-src="/asset/classes/sorcerer-de.png" ng-click="serverRanking.chooseClass('Sorcerer')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting === 'Sorcerer' || serverRanking.classSettingTemp === 'Sorcerer'" ng-src="/asset/classes/sorcerer-sel.png" ng-click="serverRanking.chooseClass('Sorcerer')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting !== 'Ninja' && serverRanking.classSettingTemp !== 'Ninja'" ng-src="/asset/classes/ninja-de.png" ng-click="serverRanking.chooseClass('Ninja')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting === 'Ninja' || serverRanking.classSettingTemp === 'Ninja'" ng-src="/asset/classes/ninja-sel.png" ng-click="serverRanking.chooseClass('Ninja')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting !== 'Priest' && serverRanking.classSettingTemp !== 'Priest'" ng-src="/asset/classes/priest-de.png" ng-click="serverRanking.chooseClass('Priest')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting === 'Priest' || serverRanking.classSettingTemp === 'Priest'" ng-src="/asset/classes/priest-sel.png" ng-click="serverRanking.chooseClass('Priest')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting !== 'Mystic' && serverRanking.classSettingTemp !== 'Mystic'" ng-src="/asset/classes/mystic-de.png" ng-click="serverRanking.chooseClass('Mystic')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.classSetting === 'Mystic' || serverRanking.classSettingTemp === 'Mystic'" ng-src="/asset/classes/mystic-sel.png" ng-click="serverRanking.chooseClass('Mystic')">
+          </center>
+        </div>
+        <div class="col-sm-3">
+          <p class="highlight">HEALER COMP</p>
+          <center>
+            <span ng-hide="serverRanking.mysticSearched">
+              <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.healerSetting !== 'P'" src="/asset/classes/priest-de.png" ng-click="serverRanking.chooseHeal('P')">
+              <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.healerSetting === 'P'" src="/asset/classes/priest-sel.png" ng-click="serverRanking.chooseHeal('P')">
+            </span>
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.healerSetting !== 'MP'" ng-src="/asset/classes/duos2-de.png" ng-click="serverRanking.chooseHeal('MP')">
+            <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.healerSetting === 'MP'" ng-src="/asset/classes/duos2-sel.png" ng-click="serverRanking.chooseHeal('MP')">
+
+            <span ng-hide="serverRanking.priestSearched">
+              <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.healerSetting !== 'M'" ng-src="/asset/classes/mystic-de.png" ng-click="serverRanking.chooseHeal('M')">
+              <input type="image" style="height:64px;width:64px;" ng-show="serverRanking.healerSetting === 'M'" ng-src="/asset/classes/mystic-sel.png" ng-click="serverRanking.chooseHeal('M')">
+            </span>
+
+          </center>
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <span class="btn btn-default btn-block" ng-click="serverRanking.setFilters()">Search</span>
+        </div>
+      </div>
+      <br/>
+      <div ng-show="serverRanking.savedSettings === true" class="text-center alert alert-success" role="alert">
+        <span class="glyphicon glyphicon-ok"></span>
+        Search settings successfully saved!</div>
+
+    </center>
+  </div>
+  <br>
+
+  <center>
+    <div class="row">
+      <div class="col-sm-12">
+        <span class="text-branding text-jumbo text-center highlight"><i class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i> PREMIUM <i class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i></span>
+      </div>
+    </div>
+  </center>
+  <br/>
+  <table ng-show="serverRanking.rankingsPremium.length" class="table table-hover">
+    <thead>
+      <th>Name</th>
+      <th>Class</th>
+      <th>Boss</th>
+      <th>Server</th>
+      <th>
+        <a href="#" ng-click="serverRanking.toggleSortByDpsPremium()">DPS<span ng-show="serverRanking.dpsPropertyPremium === -1" class="caret"></span>
+          <span ng-show="serverRanking.dpsPropertyPremium === 1" class="caret caret-reversed"></span>
+        </a>
+      </th>
+      <th ng-hide="serverRanking.priestSearched !== true">TN Uptime</th>
+      <th ng-hide="serverRanking.priestSearched !== true">ES Uptime</th>
+      <th ng-hide="serverRanking.mysticSearched !== true">VoC Uptime</th>
+      <th>
+        <a href="#" ng-click="serverRanking.toggleSortByDatePremium()">Date<span ng-show="serverRanking.datePropertyPremium === -1" class="caret"></span>
+          <span ng-show="serverRanking.datePropertyPremium === 1" class="caret caret-reversed"></span>
+        </a>
+      </th>
+    </thead>
+    <tbody>
+      <tr
+        class="animate-repeat"
+        dir-paginate="ranking in serverRanking.rankingsPremium | itemsPerPage: serverRanking.perPage"
+        total-items="serverRanking.rankingsCountPremium"
+        current-page="serverRanking.pagePremium"
+        pagination-id="premium">
+        <td>
+          <a ui-sref="premium"><i title="Premium User" data-toggle="tooltip" tooltip ng-show="ranking.premium === true" class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i></a>
+          <a ui-sref="rankDetailsParty({ rankId: ranking.encId })">{{ ranking.mainPlayer }}</a>
+        </td>
+        <td>{{ ranking.mainClass }}
+          <span ng-show="ranking.dpsStance === 'D'">(DPS)</span>
+          <span ng-show="ranking.dpsStance === 'T'">(TANK)</span>
+        </td>
+        <td>{{ serverRanking.getBoss(ranking.bossId, ranking.areaId) }}</td>
+        <td>{{ ranking.mainServer }}</td>
+        <td>{{ ranking.mainDps.toLocaleString() }}</td>
+        <td ng-hide="serverRanking.priestSearched !== true">{{ ranking.tn }}%</td>
+        <td ng-hide="serverRanking.priestSearched !== true">{{ ranking.es }}%</td>
+        <td ng-hide="serverRanking.mysticSearched !== true">{{ ranking.voc }}%</td>
+        <td>{{ ranking.trueCreatedOn }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <center>
+    <div ng-show="!serverRanking.rankingsPremium.length">
+      <h5>Nobody here but us elins!</h5>
+        <br />
+    </div>
+    <dir-pagination-controls pagination-id="premium" on-page-change="serverRanking.pageChangedPremium(newPageNumber)"></dir-pagination-controls>
+  </center>
+
+    <center>
+      <div class="row">
+        <div class="col-sm-12">
+          <span class="text-branding text-jumbo text-center highlight">PERSONAL</span>
+        </div>
+      </div>
+    </center>
+    <br/>
+
+  <table ng-show="serverRanking.rankings.length" class="table table-hover">
+    <thead>
+      <th>Name</th>
+      <th>Class</th>
+      <th>Boss</th>
+      <th>Server</th>
+      <th>
+        <a href="#" ng-click="serverRanking.toggleSortByDps()">DPS<span ng-show="serverRanking.dpsProperty === -1" class="caret"></span>
+          <span ng-show="serverRanking.dpsProperty === 1" class="caret caret-reversed"></span>
+        </a>
+      </th>
+      <th ng-hide="serverRanking.priestSearched !== true">TN Uptime</th>
+      <th ng-hide="serverRanking.priestSearched !== true">ES Uptime</th>
+      <th ng-hide="serverRanking.mysticSearched !== true">VoC Uptime</th>
+      <th>
+        <a href="#" ng-click="serverRanking.toggleSortByDate()">Created On<span ng-show="serverRanking.dateProperty === -1" class="caret"></span>
+          <span ng-show="serverRanking.dateProperty === 1" class="caret caret-reversed"></span>
+        </a>
+      </th>
+    </thead>
+    <tbody>
+      <tr
+        class="animate-repeat"
+        dir-paginate="ranking in serverRanking.rankings | itemsPerPage: serverRanking.perPage"
+        current-page="serverRanking.page"
+        total-items="serverRanking.rankingsCount"
+        pagination-id="normal">
+        <td>
+          <i ng-show="ranking.freebie === true" class="fa fa-bolt fa-1x" aria-hidden="true" title="Top Rank: {{ ranking.region }} {{ ranking.mainClass }} - {{ serverRanking.getBoss(ranking.bossId, ranking.areaId) }}" data-toggle="tooltip" tooltip></i>
+          <a ui-sref="premium"><i title="Premium User" data-toggle="tooltip" tooltip ng-show="ranking.premium === true" class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i></a>
+          <a ui-sref="rankDetailsParty({ rankId: ranking.encId })">{{ ranking.mainPlayer }}</a>
+        </td>
+        <td>{{ ranking.mainClass }}
+          <span ng-show="ranking.dpsStance === 'D'">(DPS)</span>
+          <span ng-show="ranking.dpsStance === 'T'">(TANK)</span>
+        </td>
+        <td>{{ serverRanking.getBoss(ranking.bossId, ranking.areaId) }}</td>
+        <td>{{ ranking.mainServer }}</td>
+        <td>{{ ranking.mainDps.toLocaleString() }}</td>
+        <td ng-hide="serverRanking.priestSearched !== true">{{ ranking.tn }}%</td>
+        <td ng-hide="serverRanking.priestSearched !== true">{{ ranking.es }}%</td>
+        <td ng-hide="serverRanking.mysticSearched !== true">{{ ranking.voc }}%</td>
+        <td>{{ ranking.trueCreatedOn }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <center>
+    <div ng-show="!serverRanking.rankings.length">
+      <h5>Nobody here but us elins!</h5>
+        <br />
+    </div>
+    <dir-pagination-controls pagination-id="normal" on-page-change="serverRanking.pageChanged(newPageNumber)"></dir-pagination-controls>
+  </center>
+</div>

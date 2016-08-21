@@ -1,0 +1,322 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="col-sm-12">
+      <img ng-src="{{ classRanking.getClassImage(classRanking.searchClass) }}">
+      <br/>
+      <span class="text-branding text-jumbo highlight">{{ classRanking.searchClass.toUpperCase() }}</span>
+    </div>
+  </div>
+
+  <center>
+    <br/>
+    <div class="row">
+      <div class="col-sm-12">
+      <div class='well'>
+        <div class="row">
+        <div class="col-sm-2">
+          <label class="text-uppercase" for="player">Players</label>
+          <div class="input-group input-group-sm col-sm-6">
+            <input type="text" id="player" class="form-control" ng-model="classRanking.playerSetting" placeholder=""/>
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <label class="text-uppercase" for="boss">Bosses</label>
+          <div class="input-group input-group-sm col-sm-6">
+            <select class="form-control" id="boss" ng-model="classRanking.bossSetting">
+              <option value="">All</option>
+              <!-- <optgroup label="Forsaken Island Hard Mode (FIHM)">
+                <option value="759.1001">Nightmare Rokdos</option>
+                <option value="759.1002">Nightmare Viyor</option>
+                <option value="759.1003">Nightmare Desolarus</option>
+              </optgroup> -->
+              <optgroup label="Dreadspire III (DS3)">
+                <option value="886.88518">Floor 16: Hrathgol</option>
+                <option value="886.88516">Floor 18: Lokmar Sorgalur</option>
+                <option value="886.88519">Floor 19: Meldita</option>
+                <option value="886.88601">Floor 20: Koleogg</option>
+                <option value="886.88602">Floor 21: Kaprima</option>
+                <option value="886.885200">Floor 22: Shandra Manaya</option>
+              </optgroup>
+              <optgroup label="Demokron Factory Normal (DFNM)">
+                <option value="767.46704">Verno</option>
+              </optgroup>
+              <optgroup label="Demokron Factory Hard (DFHM)">
+                <option value="467.46701">Nightmare Vera</option>
+                <option value="467.46703">Nightmare Odon</option>
+                <option value="467.46704">Nightmare Verno</option>
+              </optgroup>
+              <optgroup label="Shadow Sanguinary Normal (SSNM)">
+                <option value="768.1000">Pahoegar</option>
+                <option value="768.3000">Imperator</option>
+              </optgroup>
+              <optgroup label="Shadow Sanguinary Hard (SSHM)">
+                <option value="468.1000">Nightmare Pahoegar</option>
+                <option value="468.3000">Nightmare Imperator</option>
+              </optgroup>
+              <optgroup label="Manglemire (MM)">
+                <option value="470.1000">Manglemore</option>
+              </optgroup>
+              <optgroup label="Sky Cruiser Endeavor (SCHM)">
+                <option value="916.91650">Nightmare Putrion</option>
+                <option value="916.91606">Nightmare Perimos</option>
+                <option value="916.1000">Nightmare Darkan</option>
+              </optgroup>
+              <optgroup label="Lilith's Castle Normal (LLNM)">
+                <option value="769.76901">Nightmare</option>
+                <option value="769.76902">Waxpider</option>
+                <option value="769.76903">Lilith</option>
+              </optgroup>
+              <optgroup label="Lilith's Castle Hard (LLHM)">
+                <option value="969.76901">Nightmare Nightmare</option>
+                <option value="969.76902">Nightmare Waxpider</option>
+                <option value="969.76903">Nightmare Lilith</option>
+              </optgroup>
+              <optgroup label="Rakelith's Ruins Normal (RRNM)">
+                <option value="770.1000">Revived Atrocitas</option>
+                <option value="770.2000">Revived Malgarios</option>
+                <option value="770.3000">Rakelith</option>
+              </optgroup>
+              <optgroup label="Rakelith's Ruins Hard (RRHM)">
+                <option value="970.1000">Revived Nightmare Atrocitas</option>
+                <option value="970.2000">Revived Nightmare Malgarios</option>
+                <option value="970.3000">Nightmare Rakelith</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <label class="text-uppercase" for="server">Regions</label>
+          <div class="input-group input-group-sm col-sm-6">
+            <select class="form-control" id="region" ng-model="classRanking.regionSetting">
+              <option value="">All</option>
+              <option value="NA">North America</option>
+              <option value="EU">Europe</option>
+              <option value="RU">Russia</option>
+              <option value="KR">Korea</option>
+              <option value="JP">Japan</option>
+              <option value="TW">Taiwan</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <label class="text-uppercase" for="server">Servers</label>
+          <div class="input-group input-group-sm col-sm-6">
+            <select class="form-control" id="server" ng-model="classRanking.serverSetting">
+              <option value="">All</option>
+              <optgroup label="North America (NA)">
+                <option value="Mount Tyrannas">Mount Tyrannas</option>
+                <option value="Lake of Tears">Lake Of Tears</option>
+                <option value="Valley of Titans">Valley Of Titans</option>
+                <option value="Tempest Reach">Tempest Reach</option>
+                <option value="Celestial Hills">Celestial Hills</option>
+                <option value="Highwatch">Highwatch</option>
+                <option value="Ascension Valley">Ascension Valley</option>
+              </optgroup>
+              <optgroup label="Europe (EU)">
+                <option value="Killian">Killian</option>
+                <option value="Fraya">Fraya</option>
+                <option value="Hasima">Hasmina</option>
+                <option value="Elinu">Elinu</option>
+                <option value="Icaruna">Icaruna</option>
+                <option value="Veritas">Veritas</option>
+                <option value="Akasha">Akasha</option>
+                <option value="Arcadia">Arcadia</option>
+                <option value="Kaidun">Kaidun</option>
+              </optgroup>
+              <optgroup label="Russia (RU)">
+                <option value="Арун">Арун</option>
+                <option value="Кайатор">Кайатор</option>
+                <option value="Арборея">Арборея</option>
+                <option value="Лоркада">Лоркада</option>
+                <option value="Балдера">Балдера</option>
+                <option value="Эссения">Эссения</option>
+                <option value="Вестония">Вестония</option>
+              </optgroup>
+              <optgroup label="Korea (KR)">
+                <option value="벨릭의 은총">벨릭의 은총</option>
+                <option value="세렌의 용기">세렌의 용기</option>
+                <option value="아룬의 영광">아룬의 영광</option>
+                <option value="발더의 지혜">발더의 지혜</option>
+                <option value="프레이아의 수호">프레이아의 수호</option>
+              </optgroup>
+              <optgroup label="Japan (JP)">
+                <option value="ユリエン">ユリエン</option>
+                <option value="エリーヌ">エリーヌ</option>
+              </optgroup>
+              <optgroup label="Taiwan (TW)">
+                <option value="提雅拉尼亞">提雅拉尼亞</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <label class="text-uppercase">Healer Comp</label><br>
+          <span ng-hide="classRanking.searchClass === 'Mystic'">
+            <input type="image" style="height:30px;width:30px;" ng-show="classRanking.healerSetting !== 'P'" src="/asset/classes/priest-de.png" ng-click="classRanking.chooseHeal('P')">
+            <input type="image" style="height:30px;width:30px;" ng-show="classRanking.healerSetting === 'P'" src="/asset/classes/priest-sel.png" ng-click="classRanking.chooseHeal('P')">
+          </span>
+
+          <input type="image" style="height:30px;width:30px;" ng-show="classRanking.healerSetting !== 'MP'" ng-src="/asset/classes/duos2-de.png" ng-click="classRanking.chooseHeal('MP')">
+          <input type="image" style="height:30px;width:30px;" ng-show="classRanking.healerSetting === 'MP'" ng-src="/asset/classes/duos2-sel.png" ng-click="classRanking.chooseHeal('MP')">
+
+          <span ng-hide="classRanking.searchClass === 'Priest'">
+            <input type="image" style="height:30px;width:30px;" ng-show="classRanking.healerSetting !== 'M'" ng-src="/asset/classes/mystic-de.png" ng-click="classRanking.chooseHeal('M')">
+            <input type="image" style="height:30px;width:30px;" ng-show="classRanking.healerSetting === 'M'" ng-src="/asset/classes/mystic-sel.png" ng-click="classRanking.chooseHeal('M')">
+          </span>
+        </div>
+
+        <div class="col-sm-2">
+          <label for="slaying">SLAYING</label>
+          <br/>
+          <input id="slaying" type="image" style="height:30px;width:30px;" ng-show="classRanking.slayingSetting === 'Y'" src="/asset/items/slaying.png" ng-click="classRanking.chooseSlaying('N')">
+          <input id="slaying" type="image" style="height:30px;width:30px;" ng-show="classRanking.slayingSetting === 'N'" src="/asset/tanker.png" ng-click="classRanking.chooseSlaying('')">
+          <input id="slaying" type="image" style="height:30px;width:30px;" ng-show="classRanking.slayingSetting === ''" src="/asset/dpser.png" ng-click="classRanking.chooseSlaying('Y')">
+        </div>
+      </div>
+
+        <br />
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <span class="btn btn-default btn-block" ng-click="classRanking.setFilters()">Search</span>
+          </div>
+          <br/>
+        </div>
+        <br />
+        <div ng-show="classRanking.savedSettings === true" class="text-center alert alert-success" role="alert">
+          <span class="glyphicon glyphicon-ok"></span>
+          Search settings successfully saved!</div>
+    </div>
+
+  </div>
+</div>
+  </center>
+
+  <br>
+
+  <div class="row text-center">
+    <div class="col-sm-12">
+      <span class="text-jumbo highlight">
+        <i class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i>
+        PREMIUM
+        <i class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+  <br/>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <table ng-show="classRanking.rankingsPremium.length" class="table table-hover">
+        <thead>
+          <th>Name</th>
+          <th>Class</th>
+          <th>Boss</th>
+          <th>Server</th>
+          <th>
+            <a href="#" ng-click="classRanking.toggleSortByDpsPremium()">DPS<span ng-show="classRanking.dpsPropertyPremium === -1" class="caret"></span>
+              <span ng-show="classRanking.dpsPropertyPremium === 1" class="caret caret-reversed"></span>
+            </a>
+          </th>
+          <th ng-hide="classRanking.searchClass !== 'Priest'">TN Uptime</th>
+          <th ng-hide="classRanking.searchClass !== 'Priest'">ES Uptime</th>
+          <th ng-hide="classRanking.searchClass !== 'Mystic'">VoC Uptime</th>
+          <th>
+            <a href="#" ng-click="classRanking.toggleSortByDatePremium()">Date<span ng-show="classRanking.datePropertyPremium === -1" class="caret"></span>
+              <span ng-show="classRanking.datePropertyPremium === 1" class="caret caret-reversed"></span>
+            </a>
+          </th>
+        </thead>
+        <tbody>
+          <tr class="animate-repeat" dir-paginate="ranking in classRanking.rankingsPremium | itemsPerPage: classRanking.perPage" total-items="classRanking.rankingsCountPremium" current-page="classRanking.pagePremium" pagination-id="premium">
+            <td>
+              <a ui-sref="premium">
+                <i title="Premium User" data-toggle="tooltip" tooltip ng-show="ranking.premium === true" class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i>
+              </a>
+              <a ui-sref="rankDetailsParty({ rankId: ranking.encId })">{{ ranking.mainPlayer }}</a>
+            </td>
+            <td>{{ ranking.mainClass }}
+              <span ng-show="ranking.dpsStance === 'D'">(DPS)</span>
+              <span ng-show="ranking.dpsStance === 'T'">(TANK)</span>
+            </td>
+            <td>{{ classRanking.getBoss(ranking.bossId, ranking.areaId) }}</td>
+            <td>{{ ranking.mainServer }}</td>
+            <td>{{ ranking.mainDps.toLocaleString() }}</td>
+            <td ng-hide="classRanking.searchClass !== 'Priest'">{{ ranking.tn }}%</td>
+            <td ng-hide="classRanking.searchClass !== 'Priest'">{{ ranking.es }}%</td>
+            <td ng-hide="classRanking.searchClass !== 'Mystic'">{{ ranking.voc }}%</td>
+            <td>{{ ranking.trueCreatedOn }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <center>
+        <div ng-show="!classRanking.rankingsPremium.length">
+          <h5>Nobody here but us elins!</h5>
+            <br />
+        </div>
+        <dir-pagination-controls pagination-id="premium" on-page-change="classRanking.pageChangedPremium(newPageNumber)"></dir-pagination-controls>
+      </center>
+    </div>
+  </div>
+
+  <center>
+    <div class="row">
+      <div class="col-sm-12">
+        <span class="text-branding text-jumbo text-center highlight">PERSONAL</span>
+      </div>
+    </div>
+  </center>
+  <br/>
+  <table ng-show="classRanking.rankings.length" class="table table-hover">
+    <thead>
+      <th>Name</th>
+      <th>Class</th>
+      <th>Boss</th>
+      <th>Server</th>
+      <th>
+        <a href="#" ng-click="classRanking.toggleSortByDps()">DPS<span ng-show="classRanking.dpsProperty === -1" class="caret"></span>
+          <span ng-show="classRanking.dpsProperty === 1" class="caret caret-reversed"></span>
+        </a>
+      </th>
+      <th ng-hide="classRanking.searchClass !== 'Priest'">TN Uptime</th>
+      <th ng-hide="classRanking.searchClass !== 'Priest'">ES Uptime</th>
+      <th ng-hide="classRanking.searchClass !== 'Mystic'">VoC Uptime</th>
+      <th>
+        <a href="#" ng-click="classRanking.toggleSortByDate()">Date<span ng-show="classRanking.dateProperty === -1" class="caret"></span>
+          <span ng-show="classRanking.dateProperty === 1" class="caret caret-reversed"></span>
+        </a>
+      </th>
+    </thead>
+    <tbody>
+      <tr class="animate-repeat" dir-paginate="ranking in classRanking.rankings | itemsPerPage: classRanking.perPage" current-page="classRanking.page" total-items="classRanking.rankingsCount" pagination-id="solo">
+        <td>
+          <i ng-show="ranking.freebie === true" class="fa fa-bolt fa-1x" aria-hidden="true" title="Top Rank: {{ ranking.region }} {{ ranking.mainClass }} - {{ classRanking.getBoss(ranking.bossId, ranking.areaId) }}" data-toggle="tooltip" tooltip></i>
+          <a ui-sref="premium">
+            <i title="Premium User" data-toggle="tooltip" tooltip ng-show="ranking.premium === true" class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i>
+          </a>
+          <a ui-sref="rankDetailsParty({ rankId: ranking.encId })">{{ ranking.mainPlayer }}</a>
+        </td>
+        <td>{{ ranking.mainClass }}
+          <span ng-show="ranking.dpsStance === 'D'">(DPS)</span>
+          <span ng-show="ranking.dpsStance === 'T'">(TANK)</span>
+        </td>
+        <td>{{ classRanking.getBoss(ranking.bossId, ranking.areaId) }}</td>
+        <td>{{ ranking.mainServer }}</td>
+        <td>{{ ranking.mainDps.toLocaleString() }}</td>
+        <td ng-hide="classRanking.searchClass !== 'Priest'">{{ ranking.tn }}%</td>
+        <td ng-hide="classRanking.searchClass !== 'Priest'">{{ ranking.es }}%</td>
+        <td ng-hide="classRanking.searchClass !== 'Mystic'">{{ ranking.voc }}%</td>
+        <td>{{ ranking.trueCreatedOn }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <center>
+    <div ng-show="!classRanking.rankings.length">
+      <h5>Nobody here but us elins!</h5>
+        <br />
+    </div>
+    <dir-pagination-controls pagination-id="solo" on-page-change="classRanking.pageChanged(newPageNumber)"></dir-pagination-controls>
+  </center>
+</div>

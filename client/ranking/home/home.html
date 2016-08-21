@@ -1,0 +1,57 @@
+<div class='container'>
+  <div class="row">
+    <center>
+      <img src="/asset/tdps3.png">
+    </center>
+  </div>
+  <div class="row">
+    <center>
+      <span class="text-small-headline text-uppercase">Realtime DPS visualization & tracking for TERA Online</span>
+    </center>
+  </div>
+  <hr>
+
+<div class="row">
+  <div class="col-sm-3">
+    <img src=/asset/1757268.png />
+  </div>
+  <div class="col-sm-6">
+    <h5 class="page-header animated infinite pulse">Welcome to TeraDPS!</h5>
+    <p>Welcome to TeraDPS!</p>
+  </div>
+  <div class="col-sm-3">
+    <h5 class="page-header">What is TeraDPS?</h5>
+    <p>TeraDPS is a web application that was created to allow players to share dps meter data with other people and improve themselves by comparing and analyzing it.</p>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+      <table class="table table-hover">
+        <thead>
+          <th>Region & Party</th>
+          <th>Server</th>
+          <th>Boss</th>
+          <th>DPS</th>
+          <th>Date</th>
+        </thead>
+        <tbody>
+
+            <tr class="animate-repeat" ng-repeat="rank in home.recent">
+            <td style="vertical-align:middle">
+              <a ui-sref="premium"><i class="fa fa-star fa-3x fa-spin" title="Premium Ranking" data-toggle="tooltip" style="position: relative; bottom: -11px;" ng-show="rank.premium === true" aria-hidden="true"></i></a>  <a ui-sref="rankDetailsParty({ rankId: rank._id })"><img style="height:25px;width:38px;" ng-src="{{ home.getRegionFlag(rank.commonServer) }}"><img style="height:50px;width:50px;" ng-repeat="member in rank.members" title="{{ member.playerName }}" data-toggle="tooltip" tooltip ng-src="{{ home.getClassImage(member.playerClass) }}"/>
+            </a>
+            </td>
+            <td style="vertical-align:middle">{{ rank.commonServer }}</td>
+            <td style="vertical-align:middle">{{ home.getBoss(rank.bossId, rank.areaId) }}</td>
+            <td style="vertical-align:middle">{{ rank.partyDps.toLocaleString() }}</td>
+            <td style="vertical-align:middle">{{ rank.trueCreatedOn }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br/>
+
+</div>

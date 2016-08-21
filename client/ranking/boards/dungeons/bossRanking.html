@@ -1,0 +1,338 @@
+<div class='container'>
+    <div class="row text-center">
+      <span class="text-branding text-region">{{ bossRanking.getArea(bossRanking.searchBoss).toUpperCase() }}</span>
+      <br>
+      <span class="text-branding text-jumbo highlight">{{ bossRanking.getBoss(bossRanking.searchBoss).toUpperCase() }}</span>
+    </div>
+  <div class='well'>
+    <center>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="player">PLAYERS</label>
+          <div class="input-group input-group-sm col-sm-6">
+            <input type="search" id="player" class="form-control" ng-model="bossRanking.playerSetting" placeholder="Type player name here."/>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <label for="region">REGIONS</label>
+          <div class="input-group input-group-sm col-sm-6">
+            <select class="form-control" id="region" ng-model="bossRanking.regionSetting">
+              <option value="">All Regions</option>
+              <option value="NA">North America</option>
+              <option value="EU">Europe</option>
+              <option value="RU">Russia</option>
+              <option value="KR">Korea</option>
+              <option value="JP">Japan</option>
+              <option value="TW">Taiwan</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <label for="server">SERVERS</label>
+          <div class="input-group input-group-sm col-sm-6">
+            <select class="form-control" id="server" ng-model="bossRanking.serverSetting">
+              <option value="">All Servers</option>
+              <optgroup label="North America (NA)">
+                <option value="Mount Tyrannas">Mount Tyrannas</option>
+                <option value="Lake of Tears">Lake Of Tears</option>
+                <option value="Valley of Titans">Valley Of Titans</option>
+                <option value="Tempest Reach">Tempest Reach</option>
+                <option value="Celestial Hills">Celestial Hills</option>
+                <option value="Highwatch">Highwatch</option>
+                <option value="Ascension Valley">Ascension Valley</option>
+              </optgroup>
+              <optgroup label="Europe (EU)">
+                <option value="Killian">Killian</option>
+                <option value="Fraya">Fraya</option>
+                <option value="Hasmina">Hasmina</option>
+                <option value="Elinu">Elinu</option>
+                <option value="Icaruna">Icaruna</option>
+                <option value="Veritas">Veritas</option>
+                <option value="Akasha">Akasha</option>
+                <option value="Arcadia">Arcadia</option>
+                <option value="Kaidun">Kaidun</option>
+              </optgroup>
+              <optgroup label="Russia (RU)">
+                <option value="Арун">Арун</option>
+                <option value="Кайатор">Кайатор</option>
+                <option value="Арборея">Арборея</option>
+                <option value="Лоркада">Лоркада</option>
+                <option value="Балдера">Балдера</option>
+                <option value="Эссения">Эссения</option>
+                <option value="Вестония">Вестония</option>
+              </optgroup>
+              <optgroup label="Korea (KR)">
+                <option value="벨릭의 은총">벨릭의 은총</option>
+                <option value="세렌의 용기">세렌의 용기</option>
+                <option value="아룬의 영광">아룬의 영광</option>
+                <option value="발더의 지혜">발더의 지혜</option>
+                <option value="프레이아의 수호">프레이아의 수호</option>
+              </optgroup>
+              <optgroup label="Japan (JP)">
+                <option value="ユリエン">ユリエン</option>
+                <option value="エリーヌ">エリーヌ</option>
+              </optgroup>
+              <optgroup label="Taiwan (TW)">
+                <option value="提雅拉尼亞">提雅拉尼亞</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <label for="slaying">SLAYING</label>
+          <br />
+          <input id="slaying" type="image" style="height:40px;width:40px;" ng-show="bossRanking.slayingSetting === 'Y'" src="/asset/items/slaying.png" ng-click="bossRanking.chooseSlaying('N')">
+          <input id="slaying" type="image" style="height:40px;width:40px;" ng-show="bossRanking.slayingSetting === 'N'" src="/asset/tanker.png" ng-click="bossRanking.chooseSlaying('')">
+          <input id="slaying" type="image" style="height:40px;width:40px;" ng-show="bossRanking.slayingSetting === ''" src="/asset/dpser.png" ng-click="bossRanking.chooseSlaying('Y')">
+        </div>
+
+      </div>
+
+      <br>
+      <div class="row">
+        <div class="col-sm-9">
+          <p class="highlight">CLASSES</p>
+          <center>
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting !== 'Brawler' && bossRanking.classSettingTemp !== 'Brawler'" src="/asset/classes/brawler-de.png" ng-click="bossRanking.chooseClass('Brawler')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting === 'Brawler' || bossRanking.classSettingTemp === 'Brawler'" src="/asset/classes/brawler-sel3.png" ng-click="bossRanking.chooseClass('Brawler')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting !== 'Berserker' && bossRanking.classSettingTemp !== 'Berserker'" ng-src="/asset/classes/berserker-de.png" ng-click="bossRanking.chooseClass('Berserker')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting === 'Berserker' || bossRanking.classSettingTemp === 'Berserker'" ng-src="/asset/classes/berserker-sel.png" ng-click="bossRanking.chooseClass('Berserker')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting !== 'Lancer' && bossRanking.classSettingTemp !== 'Lancer'" ng-src="/asset/classes/lancer-de.png" ng-click="bossRanking.chooseClass('Lancer')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting === 'Lancer' || bossRanking.classSettingTemp === 'Lancer'" ng-src="/asset/classes/lancer-sel.png" ng-click="bossRanking.chooseClass('Lancer')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting !== 'Warrior' && bossRanking.classSettingTemp !== 'Warrior'" ng-src="/asset/classes/warrior-de.png" ng-click="bossRanking.chooseClass('Warrior')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting === 'Warrior' || bossRanking.classSettingTemp === 'Warrior'" ng-src="/asset/classes/warrior-sel.png" ng-click="bossRanking.chooseClass('Warrior')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting !== 'Slayer' && bossRanking.classSettingTemp !== 'Slayer'" ng-src="/asset/classes/slayer-de.png" ng-click="bossRanking.chooseClass('Slayer')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting === 'Slayer' || bossRanking.classSettingTemp === 'Slayer'" ng-src="/asset/classes/slayer-sel.png" ng-click="bossRanking.chooseClass('Slayer')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting !== 'Archer' && bossRanking.classSettingTemp !== 'Archer'" ng-src="/asset/classes/archer-de.png" ng-click="bossRanking.chooseClass('Archer')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting === 'Archer' || bossRanking.classSettingTemp === 'Archer'" ng-src="/asset/classes/archer-sel.png" ng-click="bossRanking.chooseClass('Archer')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting !== 'Reaper' && bossRanking.classSettingTemp !== 'Reaper'" ng-src="/asset/classes/reaper-de.png" ng-click="bossRanking.chooseClass('Reaper')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting === 'Reaper' || bossRanking.classSettingTemp === 'Reaper'" ng-src="/asset/classes/reaper-sel.png" ng-click="bossRanking.chooseClass('Reaper')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting !== 'Gunner' && bossRanking.classSettingTemp !== 'Gunner'" ng-src="/asset/classes/gunner-de.png" ng-click="bossRanking.chooseClass('Gunner')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting === 'Gunner' || bossRanking.classSettingTemp === 'Gunner'" ng-src="/asset/classes/gunner-sel.png" ng-click="bossRanking.chooseClass('Gunner')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting !== 'Sorcerer' && bossRanking.classSettingTemp !== 'Sorcerer'" ng-src="/asset/classes/sorcerer-de.png" ng-click="bossRanking.chooseClass('Sorcerer')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting === 'Sorcerer' || bossRanking.classSettingTemp === 'Sorcerer'" ng-src="/asset/classes/sorcerer-sel.png" ng-click="bossRanking.chooseClass('Sorcerer')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting !== 'Ninja' && bossRanking.classSettingTemp !== 'Ninja'" ng-src="/asset/classes/ninja-de.png" ng-click="bossRanking.chooseClass('Ninja')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting === 'Ninja' || bossRanking.classSettingTemp === 'Ninja'" ng-src="/asset/classes/ninja-sel.png" ng-click="bossRanking.chooseClass('Ninja')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting !== 'Priest' && bossRanking.classSettingTemp !== 'Priest'" ng-src="/asset/classes/priest-de.png" ng-click="bossRanking.chooseClass('Priest')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting === 'Priest' || bossRanking.classSettingTemp === 'Priest'" ng-src="/asset/classes/priest-sel.png" ng-click="bossRanking.chooseClass('Priest')">
+
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting !== 'Mystic' && bossRanking.classSettingTemp !== 'Mystic'" ng-src="/asset/classes/mystic-de.png" ng-click="bossRanking.chooseClass('Mystic')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.classSetting === 'Mystic' || bossRanking.classSettingTemp === 'Mystic'" ng-src="/asset/classes/mystic-sel.png" ng-click="bossRanking.chooseClass('Mystic')">
+          </center>
+        </div>
+        <div class="col-sm-3">
+          <p class="highlight">HEALER COMP</p>
+          <center>
+            <span ng-hide="bossRanking.mysticSearched">
+              <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.healerSetting !== 'P'" src="/asset/classes/priest-de.png" ng-click="bossRanking.chooseHeal('P')">
+              <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.healerSetting === 'P'" src="/asset/classes/priest-sel.png" ng-click="bossRanking.chooseHeal('P')">
+            </span>
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.healerSetting !== 'MP'" ng-src="/asset/classes/duos2-de.png" ng-click="bossRanking.chooseHeal('MP')">
+            <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.healerSetting === 'MP'" ng-src="/asset/classes/duos2-sel.png" ng-click="bossRanking.chooseHeal('MP')">
+
+            <span ng-hide="bossRanking.priestSearched">
+              <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.healerSetting !== 'M'" ng-src="/asset/classes/mystic-de.png" ng-click="bossRanking.chooseHeal('M')">
+              <input type="image" style="height:64px;width:64px;" ng-show="bossRanking.healerSetting === 'M'" ng-src="/asset/classes/mystic-sel.png" ng-click="bossRanking.chooseHeal('M')">
+            </span>
+          </center>
+        </div>
+      </div>
+    </center>
+    <br/>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <span class="btn btn-default btn-block" ng-click="bossRanking.setFilters()">Search</span>
+      </div>
+    </div>
+    <br/>
+    <div ng-show="bossRanking.savedSettings === true" class="text-center alert alert-success" role="alert">
+      <span class="glyphicon glyphicon-ok"></span>
+      Search settings successfully saved!</div>
+  </div>
+
+<center>
+  <div class="row">
+    <div class="col-sm-12">
+      <span class="text-branding text-jumbo text-center highlight"><i class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i> PREMIUM <i class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i></span>
+    </div>
+  </div>
+</center>
+<br/>
+<table ng-show="bossRanking.rankingsPremium.length" class="table table-hover">
+  <thead>
+    <th>Name</th>
+    <th>Class</th>
+    <th>Boss</th>
+    <th>Server</th>
+    <th>
+      <a href="#" ng-click="bossRanking.toggleSortByDpsPremium()">DPS<span ng-show="bossRanking.dpsPropertyPremium === -1" class="caret"></span>
+        <span ng-show="bossRanking.dpsPropertyPremium === 1" class="caret caret-reversed"></span>
+      </a>
+    </th>
+    <th ng-hide="bossRanking.priestSearched !== true">TN Uptime</th>
+    <th ng-hide="bossRanking.priestSearched !== true">ES Uptime</th>
+    <th ng-hide="bossRanking.mysticSearched !== true">VoC Uptime</th>
+    <th>
+      <a href="#" ng-click="bossRanking.toggleSortByDatePremium()">Date<span ng-show="bossRanking.datePropertyPremium === -1" class="caret"></span>
+        <span ng-show="bossRanking.datePropertyPremium === 1" class="caret caret-reversed"></span>
+      </a>
+    </th>
+  </thead>
+  <tbody>
+    <tr
+      class="animate-repeat"
+      dir-paginate="ranking in bossRanking.rankingsPremium | itemsPerPage: bossRanking.perPage"
+      total-items="bossRanking.rankingsCountPremium"
+      current-page="bossRanking.pagePremium"
+      pagination-id="premium">
+      <td>
+        <a ui-sref="premium"><i title="Premium User" data-toggle="tooltip" tooltip ng-show="ranking.premium === true" class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i></a>
+        <a ui-sref="rankDetailsParty({ rankId: ranking.encId })">{{ ranking.mainPlayer }}</a>
+      </td>
+      <td>{{ ranking.mainClass }}
+        <span ng-show="ranking.dpsStance === 'D'">(DPS)</span>
+        <span ng-show="ranking.dpsStance === 'T'">(TANK)</span>
+      </td>
+      <td>{{ bossRanking.getBoss(ranking.bossId, ranking.areaId) }}</td>
+      <td>{{ ranking.mainServer }}</td>
+      <td>{{ ranking.mainDps.toLocaleString() }}</td>
+      <td ng-hide="bossRanking.priestSearched !== true">{{ ranking.tn }}%</td>
+      <td ng-hide="bossRanking.priestSearched !== true">{{ ranking.es }}%</td>
+      <td ng-hide="bossRanking.mysticSearched !== true">{{ ranking.voc }}%</td>
+      <td>{{ ranking.trueCreatedOn }}</td>
+    </tr>
+  </tbody>
+</table>
+<center>
+  <div ng-show="!bossRanking.rankingsPremium.length">
+    <h5>Nobody here but us elins!</h5>
+    <br />
+  </div>
+  <dir-pagination-controls pagination-id="premium" on-page-change="bossRanking.pageChangedPremium(newPageNumber)"></dir-pagination-controls>
+</center>
+
+  <center>
+    <div class="row">
+      <div class="col-sm-12">
+        <span class="text-branding text-jumbo text-center highlight">PERSONAL</span>
+      </div>
+    </div>
+  </center>
+  <br/>
+  <table ng-show="bossRanking.rankings.length" class="table table-hover">
+    <thead>
+      <th>Name</th>
+      <th>Class</th>
+      <th>Boss</th>
+      <th>Server</th>
+      <th>
+        <a href="#" ng-click="bossRanking.toggleSortByDps()">DPS<span ng-show="bossRanking.dpsProperty === -1" class="caret"></span>
+          <span ng-show="bossRanking.dpsProperty === 1" class="caret caret-reversed"></span>
+        </a>
+      </th>
+      <th ng-hide="bossRanking.priestSearched !== true">TN Uptime</th>
+      <th ng-hide="bossRanking.priestSearched !== true">ES Uptime</th>
+      <th ng-hide="bossRanking.mysticSearched !== true">VoC Uptime</th>
+      <th>
+        <a href="#" ng-click="bossRanking.toggleSortByDate()">Date<span ng-show="bossRanking.dateProperty === -1" class="caret"></span>
+          <span ng-show="bossRanking.dateProperty === 1" class="caret caret-reversed"></span>
+        </a>
+      </th>
+    </thead>
+    <tbody>
+      <tr
+        class="animate-repeat"
+        dir-paginate="ranking in bossRanking.rankings | itemsPerPage: bossRanking.perPage"
+        total-items="bossRanking.rankingsCount"
+        current-page="bossRanking.page"
+        pagination-id="solo">
+        <td>
+          <i ng-show="ranking.freebie === true" class="fa fa-bolt fa-1x" aria-hidden="true" title="Top Rank: {{ ranking.region }} {{ ranking.mainClass }} - {{ bossRanking.getBoss(ranking.bossId, ranking.areaId) }}" data-toggle="tooltip" tooltip></i>
+          <a ui-sref="premium"><i title="Premium User" data-toggle="tooltip" tooltip ng-show="ranking.premium === true" class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i></a>
+          <a ui-sref="rankDetailsParty({ rankId: ranking.encId })">{{ ranking.mainPlayer }}</a>
+        </td>
+        <td>{{ ranking.mainClass }}
+          <span ng-show="ranking.dpsStance === 'D'">(DPS)</span>
+          <span ng-show="ranking.dpsStance === 'T'">(TANK)</span>
+        </td>
+        <td>{{ bossRanking.getBoss(ranking.bossId, ranking.areaId) }}</td>
+        <td>{{ ranking.mainServer }}</td>
+        <td>{{ ranking.mainDps.toLocaleString() }}</td>
+        <td ng-hide="bossRanking.priestSearched !== true">{{ ranking.tn }}%</td>
+        <td ng-hide="bossRanking.priestSearched !== true">{{ ranking.es }}%</td>
+        <td ng-hide="bossRanking.mysticSearched !== true">{{ ranking.voc }}%</td>
+        <td>{{ ranking.trueCreatedOn }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <center>
+    <div ng-show="!bossRanking.rankings.length">
+      <h5>Nobody here but us elins!</h5>
+    </div>
+    <dir-pagination-controls pagination-id="solo" on-page-change="bossRanking.pageChanged(newPageNumber)"></dir-pagination-controls>
+  </center>
+  <br/>
+  <center>
+    <div class="row">
+      <div class="col-sm-12">
+        <span class="text-branding text-jumbo text-center highlight">GROUP</span>
+      </div>
+    </div>
+  </center>
+  <br/>
+  <table ng-show="bossRanking.rankingsParty.length" class="table table-hover">
+    <thead>
+      <th>Party Composition</th>
+      <th>Boss</th>
+      <th>Server</th>
+      <th>
+        <a href="#" ng-click="bossRanking.toggleSortByDpsParty()">DPS<span ng-show="bossRanking.dpsPropertyParty === -1" class="caret"></span>
+          <span ng-show="bossRanking.dpsPropertyParty === 1" class="caret caret-reversed"></span>
+        </a>
+      </th>
+      <th>
+        <a href="#" ng-click="bossRanking.toggleSortByDateParty()">Date<span ng-show="bossRanking.datePropertyParty === -1" class="caret"></span>
+          <span ng-show="bossRanking.datePropertyParty === 1" class="caret caret-reversed"></span>
+        </a>
+      </th>
+    </thead>
+    <tbody>
+      <tr
+        class="animate-repeat"
+        dir-paginate="ranking in bossRanking.rankingsParty | filter: bossRanking.playerSetting | filter: bossRanking.serverSetting | filter: bossRanking.regionSetting | filter: bossRanking.classSetting | filter: bossRanking.healerSetting | itemsPerPage: bossRanking.perPage"
+        total-items="bossRanking.rankingsCountParty"
+        current-page="bossRanking.pageParty"
+        pagination-id="party">
+        <td style="vertical-align:middle">
+          <a ui-sref="premium"><i ng-show="ranking.premium === true" class="fa fa-star fa-2x fa-spin" style="position: relative; bottom: -7px;" aria-hidden="true"></i></a>
+          <a ui-sref="rankDetailsParty({ rankId: ranking._id })"><img style="height:40px;width:40px;" ng-repeat="member in ranking.members" title="{{ member.playerName }}" data-toggle="tooltip" tooltip ng-src="{{ bossRanking.getClassImage(member.playerClass) }}"/></a>
+        </td>
+        <td style="vertical-align:middle">{{ bossRanking.getBoss(ranking.bossId, ranking.areaId) }}</td>
+        <td style="vertical-align:middle">{{ ranking.members[0].playerServer }}</td>
+        <td style="vertical-align:middle">{{ ranking.partyDps.toLocaleString() }}</td>
+        <td style="vertical-align:middle">{{ ranking.trueCreatedOn }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <center>
+    <div ng-show="!bossRanking.rankingsParty.length">
+      <h5>Nobody here but us elins!</h5>
+      <br />
+    </div>
+    <dir-pagination-controls pagination-id="party" on-page-change="bossRanking.pageChangedParty(newPageNumber)"></dir-pagination-controls>
+  </center>
+</div>

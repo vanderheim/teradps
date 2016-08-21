@@ -1,0 +1,202 @@
+<div class="container">
+  <div ng-show="setup.guideOpen === false">
+    <div class="row">
+      <div class="col-sm-12">
+      <h2 class="page-header text-center">Ready to start uploading?
+      </h2>
+      <p>Our guides will teach you how to upload your data to TeraDPS. It’s actually quite simple! But first, please choose which DPS meter you will be using. Currently, TeraDPS only supports ShinraMeter and CasualMeter.</p>
+</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <span class="text-headline text-center">
+          <p class="animated infinite pulse">To avoid bugged encounters, we recommend only having one meter uploading for each party!
+          <br />Please collaborate with your party to ensure only one person is uploading to avoid any bugs with your encounters.</p>
+        </span>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <p class="text-small-headline highlight text-center">CHOOSE A DPS METER BELOW</p>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-sm-6">
+        <center>
+          <img ng-click="setup.chooseShinra()" style="height:128px;width:128px;" src="/asset/shinra.jpg" >
+          <br/>
+          <span>ShinraMeter</span>
+        </center>
+      </div>
+      <div class="col-sm-6">
+        <center>
+          <img ng-click="setup.chooseCasual()" src="/asset/casual.png">
+          <br/>
+          <span>CasualMeter</span>
+        </center>
+      </div>
+    </div>
+  </div>
+  <div ng-show="setup.casualOpen === true">
+    <center>
+      <div class="row">
+        <a href="#" ng-click="setup.chooseMain()">
+          <span class="pull-left">Main Setup</span>
+        </a>
+        <a href="#" ng-click="setup.chooseShinra()">
+          <span class="pull-right">Shinra Setup Guide</span>
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <img style="height:128px;width:128px;" src="/asset/casual.png" />
+          <h1 class="page-header">CasualMeter Setup Guide</h1>
+          <p>This guide will explain how to setup CasualMeter to upload to TeraDPS.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3 class="page-header">STEP 1: Download & Install CasualMeter</h3>
+        <div class="col-sm-12">
+          <p>Visit <a href="https://github.com/lunyx/CasualMeter">CasualMeter on GitHub</a> for instructions on downloading the meter. Alternatively, you can download it directly by clicking <a href="http://lunyx.net/CasualMeter/Setup.exe">here</a>.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3 class="page-header">STEP 2: Open CasualMeter Settings Directory</h3>
+        <div class="col-sm-12">
+          <img src="/asset/guide/casual/settings.png" />
+          <br />
+          <span>With CasualMeter open, right-click it in the system tray and select the Settings Directory option. This will open the settings folder for CasualMeter.</span>
+          <br />
+          <span>After successfully opening the folder, please close CasualMeter.</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3 class="page-header">STEP 3: Open the Settings file</h3>
+        <div class="col-sm-12">
+          <img src="/asset/guide/casual/blankinfo.png" />
+          <br />
+          <span>Navigate to the settings.json file in your Settings folder and open it with any word processor of your choice. Notepad is a good example.</span>
+          <br />
+          <span>Scroll down to the section with TeraDpsUser & TeraDpsToken. They should be empty, like the picture above.</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3 class="page-header">STEP 4: Retrieve & Enter your Meter Info</h3>
+        <div class="col-sm-12">
+          <img src="/asset/guide/casual/inputinfo.png" />
+          <br />
+          <span>Make sure you are registered and logged into TeraDPS.io before proceeding. Click "Get Meter Info" in the top-right corner of TeraDPS.io, and type in your account information to retrieve your UserId and AuthToken.</span>
+          <br />
+          <span>Enter these two codes into your settings file between the quotes, like the picture above.</span>
+          <br />
+          <span style="color: red">Make sure CasualMeter is closed while editting your settings file, or your information will not be saved correctly!</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3 class="page-header">STEP 5: Turn on exporting to TeraDPS in CasualMeter</h3>
+        <div class="col-sm-12">
+          <img src="/asset/guide/casual/export.png" />
+          <br />
+          <span>Run CasualMeter and make sure Autoexport to TeraDPS.io is checked.</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3 class="page-header">You're all done!</h3>
+        <div class="col-sm-12">
+          <span>You're ready to start uploading to TeraDPS! CasualMeter will automatically upload any successful encounter you have upon killing a boss. Please remember that there are certain requirements for uploading to TeraDPS. Please see our <a href="#" ui-sref="req">Requirements Page</a> to view submission requirements.</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <span class="text-headline text-center">
+            <p class="animated infinite pulse">To avoid bugged encounters, we recommend only having one meter uploading for each party!
+            <br />Please collaborate with your party to ensure only one person is uploading to avoid any bugs with your encounters.</p>
+          </span>
+        </div>
+      </div>
+
+    </center>
+  </div>
+  <div ng-show="setup.shinraOpen === true">
+    <center>
+      <div class="row">
+        <a href="#" ng-click="setup.chooseMain()">
+          <span class="pull-left">Main Setup</span>
+        </a>
+        <a href="#" ng-click="setup.chooseCasual()">
+          <span class="pull-right">Casual Setup Guide</span>
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <img style="height:128px;width:128px;" src="/asset/shinra.jpg" />
+          <h1 class="page-header">ShinraMeter Setup Guide</h1>
+          <p>This guide will explain how to setup ShinraMeter for uploading to TeraDPS.</p>
+        </div>
+      </div>
+      <div class="row">
+        <h3 class="page-header">STEP 1: Download & Install ShinraMeter</h3>
+        <div class="col-sm-12">
+          <p>Visit <a href="https://github.com/neowutran/ShinraMeter/wiki">ShinraMeter on GitHub</a> for instructions on downloading the meter. Alternatively, you can download it directly by clicking <a href="http://neowutran.ovh:8083/updates/">here</a>.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3 class="page-header">STEP 2: Open your window.xml file</h3>
+        <div class="col-sm-12">
+          <img src="/asset/guide/shinra/settings.png" />
+          <br />
+          <span>Navigate to your window.xml file inside your ShinraMeter folder. It is located in /resources/config/ inside the main folder. Open the window.xml file with any word processor, like Notepad.</span>
+          <br />
+          <span>You will see an area with teradps.io and blank spaces inbetween user & token. This is where you will input your TeraDPS account information.</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3 class="page-header">STEP 3: Retrieve & Input your Meter Info</h3>
+        <div class="col-sm-12">
+          <img src="/asset/guide/shinra/inputinfo.png" />
+          <br />
+          <span>Make sure you are registered and logged into TeraDPS.io before proceeding. Click "Get Meter Info" in the top-right corner of TeraDPS.io, and type in your account information to retrieve your UserId and AuthToken.</span>
+          <br />
+          <span>Enter these two codes between the user and token sections, like the picture above.</span>
+          <br />
+          <span style="color: red">Make sure ShinraMeter is closed while editting your window.xml file, or your information will not be saved correctly!</span>
+      </div>
+      </div>
+
+      <div class="row">
+        <h3 class="page-header">STEP 4: Turn on exporting to TeraDPS in ShinraMeter</h3>
+        <div class="col-sm-12">
+          <img src="/asset/guide/shinra/export.png" />
+          <br />
+          <span>Run ShinraMeter and make sure Site Export is checked.</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3 class="page-header">You're all done!</h3>
+        <div class="col-sm-12">
+          <span>You're ready to start uploading to TeraDPS! ShinraMeter will automatically upload any successful encounter you have upon killing a boss. Please remember that there are certain requirements for uploading to TeraDPS. Please see our <a href="#" ui-sref="req">Requirements Page</a> to view submission requirements.</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <span class="text-headline text-center">
+            <p class="animated infinite pulse">To avoid bugged encounters, we recommend only having one meter uploading for each party!
+            <br />Please collaborate with your party to ensure only one person is uploading to avoid any bugs with your encounters.</p>
+          </span>
+        </div>
+      </div>
+    </center>
+  </div>
+  <br/>
+</div>
