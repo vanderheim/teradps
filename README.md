@@ -6,7 +6,7 @@ A web application that allows styled visualizations and archiving of DPS Meter d
 
 This application is built with the following technology:
 
-Meteor (v1.2 Only)
+Meteor (v1.2 Only, do not upgrade Meteor version to avoid build errors)
 
 MongoDB
 
@@ -18,7 +18,7 @@ AngularJS
 
 # Setup
 
-1. You'll need to install Meteor to run this app. Install it with curl https://install.meteor.com | /bin/sh
+1. You'll need to install Meteor to run this app. Install it with `curl https://install.meteor.com | /bin/sh`
 2. Clone this repo.
 3. Navigate to the repo folder and type meteor in your terminal to start the app. After it's finished, you can access it at http://localhost:3000
 
