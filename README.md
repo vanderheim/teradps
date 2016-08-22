@@ -6,7 +6,7 @@ A web application that allows styled visualizations and archiving of DPS Meter d
 
 This application is built with the following technology:
 
-Meteor (v1.2 Only, do not upgrade Meteor version to avoid build errors)
+Meteor (v1.2 Only, Please use the correct version of Meteor to avoid build errors)
 
 MongoDB
 
@@ -22,6 +22,14 @@ AngularJS
 2. Clone this repo.
 3. Navigate to the repo folder and type meteor in your terminal to start the app. After it's finished, you can access it at http://localhost:3000
 4. A sample encounter record is added for demonstration purposes on first startup.
+
+# Features
+
+- Stores DPS meter data submitted by ShinraMeter/CasualMeter into MongoDB.
+
+- Provides a styled UI for viewing DPS meter data via the Encounter Display pages.
+
+- Allows searching of encounter database with a range of filters, such as class, server, boss, slaying, heal comp, etc.
 
 # For DPS Meter Developers
 
