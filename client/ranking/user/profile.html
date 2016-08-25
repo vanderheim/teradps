@@ -1,0 +1,575 @@
+<!-- <div ng-show="profile.prof.mainPlayer === undefined" class='container Aligner-item'>
+  <div class="row">
+    <center>
+      <img src="/asset/1757280.png"/>
+      <br/>
+      <br/>
+      <span class="text-headline">NOW LOADING...</span>
+      <span>
+        <i class="fa fa-cog fa-spin fa-2x fa-fw"></i>
+      </span>
+      <br/>
+      <br/>
+    </center>
+  </div>
+  <div class="row text-center">
+    <div class="col-sm-12">
+      <span>Been here longer than a minute?!</span>
+      <br/>
+      <span>The user you're looking for may not be premium!</span>
+    </div>
+  </div>
+</div> -->
+<div class="container ng-cloak">
+  <center>
+    <div class="row" ng-repeat="rank in profile.rankings | limitTo: 1">
+      <span class="text-jumbo"><img style="height:48px;width:48px;position: relative; top: -5px; right: -5px;" ng-src="{{ profile.getClassImage(rank.mainClass) }}"/>
+        {{ rank.mainPlayer }}</span>
+    </div>
+    <br/>
+        <img ng-hide="profile.prof.picture === undefined" ng-src="{{ profile.prof.picture }}"/>
+  </center>
+  <br/>
+  <div class="row">
+    <div class="col-sm-4 text-center">
+      <span>CLASS</span>
+      <br/>
+      <p ng-repeat="rank in profile.rankings | limitTo: 1" class="text-headline">{{ rank.mainClass }}</p>
+    </div>
+
+    <div class="col-sm-4 text-center">
+      <span>SERVER</span>
+      <br/>
+      <p ng-repeat="rank in profile.rankings | limitTo: 1" class="text-headline">{{ rank.mainServer }}</p>
+    </div>
+
+    <div class="col-sm-4 text-center">
+      <span>REGION</span>
+      <br/>
+      <p class="text-headline" ng-repeat="rank in profile.rankings | limitTo: 1">{{ profile.getRegion(rank.mainServer) }}</p>
+    </div>
+
+  </div>
+  <br />
+  <!-- <div class="row">
+    <div class="container">
+      <hr>
+      <span class="pre">{{ profile.prof.desc }}</span>
+    </div>
+  </div>
+
+    <div class="row">
+      <center>
+        <p class="text-headline text-uppercase highlight">GEAR</p>
+      </center>
+      <div class="col-sm-4">
+        <uib-accordion close-others="false">
+          <div uib-accordion-group is-open="profileEdit.status.openEarring1">
+            <uib-accordion-heading>
+              <span><img ng-src="/asset/gear/quest_earring_30_tex.png"/>{{ profileEdit.prof.ear1.name | translate }}</span>
+              <span style="position:relative;bottom:-10px;">
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': profileEdit.status.openEarring1, 'glyphicon-chevron-right': !profileEdit.status.openEarring1}"></i>
+              </span>
+            </uib-accordion-heading>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.ear1.one | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.ear1.two | translate }}</p>
+          </div>
+        </uib-accordion>
+
+        <uib-accordion close-others="false">
+          <div uib-accordion-group is-open="profileEdit.status.openWeapon">
+            <uib-accordion-heading>
+              <span><img ng-src="/asset/gear/lance29_a_tex.png"/>{{ profileEdit.prof.weapon.plus }}
+                {{ profileEdit.prof.weapon.name | translate }}</span>
+              <span style="position:relative;bottom:-10px;">
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': profileEdit.status.openWeapon, 'glyphicon-chevron-right': !profileEdit.status.openWeapon}"></i>
+              </span>
+            </uib-accordion-heading>
+
+            <label for="wep">Weapon:</label>
+            <select class="form-control" id="wep" ng-model="profileEdit.weapon.name">
+              <option value="">Not Specified</option>
+              <option value="Lucid">Lucid</option>
+              <option value="Dreadnaught">Dreadnaught</option>
+              <option value="Starfall">Starfall</option>
+              <option value="Conflate">Conflate</option>
+              <option value="Slaughter">Slaughter</option>
+              <option value="Imperator">Imperator</option>
+            </select>
+
+            <label for="weaponplus">Enchantment Level:</label>
+            <select class="form-control" id="weaponplus" ng-model="profileEdit.weapon.plus">
+              <option value="">Not Specified</option>
+              <option value="+9">+9</option>
+              <option value="+10">+10</option>
+              <option value="+11">+11</option>
+              <option value="+12">+12</option>
+              <option value="+13">+13</option>
+              <option value="+14">+14</option>
+              <option value="+15">+15</option>
+            </select>
+
+            <label for="wepetch">Etching:</label>
+            <select class="form-control" id="wepetch" ng-model="profileEdit.weapon.etch">
+              <option value="">Not Specified</option>
+              <option value="Keen">Keen Etching</option>
+              <option value="Pumped">Pumped Etching</option>
+              <option value="Energetic">Energetic Etching</option>
+            </select>
+            <br/>
+
+            <span>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i> <label for="weprollbase"> Bonus Roll Base:</label>
+              <select class="form-control" id="weproll1" ng-model="profileEdit.weapon.one">
+                <option value="">Not Specified</option>
+                <option value="Enrage">Increases damage by 9.3% when attacking enraged monsters.</option>
+                <option value="Flat">Increases damage by 6%.</option>
+                <option value="Behind">Increases damage by 6.9% when attacking from behind.</option>
+                <option value="HighestAggro">Increases damage by 8.6% to the target with the most aggro toward you.</option>
+                <option value="Cooldown">Decreases skill cooldowns by 7.2%.</option>
+                <option value="Aspd">Increases Attack Speed by 4.5%.</option>
+                <option value="CritRate">Increases Crit Factor by 14.</option>
+                <option value="CritPower">Increases Crit Power by 0.3.</option>
+                <option value="KnockedDmg">Increases damage by 5.3% when attacking knocked-down targets.</option>
+                <option value="MpCombatStart">0.5% chance to replenish MP when combat starts.</option>
+                <option value="MpSkill">Replenishes 0.6% of total MP instantly when you use a skill.</option>
+              </select>
+            </span>
+            <hr>
+            <p>
+              <label for="weproll1"><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Bonus Roll 1:</label>
+              <select class="form-control" id="weproll1" ng-model="profileEdit.weapon.one">
+                <option value="">Not Specified</option>
+                <option value="Enrage">Increases damage by 9.3% when attacking enraged monsters.</option>
+                <option value="Flat">Increases damage by 6%.</option>
+                <option value="Behind">Increases damage by 6.9% when attacking from behind.</option>
+                <option value="HighestAggro">Increases damage by 8.6% to the target with the most aggro toward you.</option>
+                <option value="Cooldown">Decreases skill cooldowns by 7.2%.</option>
+                <option value="Aspd">Increases Attack Speed by 4.5%.</option>
+                <option value="CritRate">Increases Crit Factor by 14.</option>
+                <option value="CritPower">Increases Crit Power by 0.3.</option>
+                <option value="KnockedDmg">Increases damage by 5.3% when attacking knocked-down targets.</option>
+                <option value="MpCombatStart">0.5% chance to replenish MP when combat starts.</option>
+                <option value="MpSkill">Replenishes 0.6% of total MP instantly when you use a skill.</option>
+              </select>
+
+              {{ profileEdit.prof.weapon.one | translate }}
+            </p>
+            <p>
+              <label for="weproll2"><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Bonus Roll 2:</label>
+              <select class="form-control" id="weproll2" ng-model="profileEdit.weapon.two">
+                <option value="">Not Specified</option>
+                <option value="Enrage">Increases damage by 9.3% when attacking enraged monsters.</option>
+                <option value="Flat">Increases damage by 6%.</option>
+                <option value="Behind">Increases damage by 6.9% when attacking from behind.</option>
+                <option value="HighestAggro">Increases damage by 8.6% to the target with the most aggro toward you.</option>
+                <option value="Cooldown">Decreases skill cooldowns by 7.2%.</option>
+                <option value="Aspd">Increases Attack Speed by 4.5%.</option>
+                <option value="CritRate">Increases Crit Factor by 14.</option>
+                <option value="CritPower">Increases Crit Power by 0.3.</option>
+              </select>
+            </p>
+            <p>
+              <label for="weproll3"><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Bonus Roll 3:</label>
+              <select class="form-control" id="weproll3" ng-model="profileEdit.weapon.three">
+                <option value="">Not Specified</option>
+                <option value="Enrage">Increases damage by 9.3% when attacking enraged monsters.</option>
+                <option value="Flat">Increases damage by 6%.</option>
+                <option value="Behind">Increases damage by 6.9% when attacking from behind.</option>
+                <option value="HighestAggro">Increases damage by 8.6% to the target with the most aggro toward you.</option>
+                <option value="Cooldown">Decreases skill cooldowns by 7.2%.</option>
+                <option value="Aspd">Increases Attack Speed by 4.5%.</option>
+                <option value="CritRate">Increases Crit Factor by 14.</option>
+                <option value="CritPower">Increases Crit Power by 0.3.</option>
+              </select>
+            </p>
+            <p>
+              <label ng-show="profileEdit.weapon.name === 'Imperator' || profileEdit.weapon.name === 'Starfall' || profileEdit.weapon.name === 'Lucid'" for="weproll4"><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Bonus Roll 4:</label>
+              <select ng-show="profileEdit.weapon.name === 'Imperator' || profileEdit.weapon.name === 'Starfall' || profileEdit.weapon.name === 'Lucid'" class="form-control" id="weproll4" ng-model="profileEdit.weapon.four">
+                <option value="">Not Specified</option>
+                <option value="Enrage">Increases damage by 9.3% when attacking enraged monsters.</option>
+                <option value="Flat">Increases damage by 6%.</option>
+                <option value="Behind">Increases damage by 6.9% when attacking from behind.</option>
+                <option value="HighestAggro">Increases damage by 8.6% to the target with the most aggro toward you.</option>
+                <option value="Cooldown">Decreases skill cooldowns by 7.2%.</option>
+                <option value="Aspd">Increases Attack Speed by 4.5%.</option>
+                <option value="CritRate">Increases Crit Factor by 14.</option>
+                <option value="CritPower">Increases Crit Power by 0.3.</option>
+              </select>
+            </p>
+
+            <span class="btn btn-success btn-block pull-right" ng-click="profileEdit.editPremiumGearWeap(profileEdit.prof._id, profileEdit.weapon)">Save</span>
+
+          </div>
+        </uib-accordion>
+
+        <uib-accordion close-others="false">
+          <div uib-accordion-group is-open="profileEdit.status.openBoot">
+            <uib-accordion-heading>
+              <span><img ng-src="/asset/gear/heavyboots19_c_tex.png"/>{{ profileEdit.prof.boot.plus }}
+                {{ profileEdit.prof.boot.name | translate }}</span>
+              <span style="position:relative;bottom:-10px;">
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': profileEdit.status.openBoot, 'glyphicon-chevron-right': !profileEdit.status.openBoot}"></i>
+              </span>
+            </uib-accordion-heading>
+
+            {{ profileEdit.prof.boot.etch | translate }}
+            <br/>
+
+            <hr>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.boot.one | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.boot.two | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.boot.three | translate }}</p>
+          </div>
+        </uib-accordion>
+
+        <uib-accordion close-others="false">
+          <div uib-accordion-group is-open="profileEdit.status.openRing1">
+            <uib-accordion-heading>
+              <span><img ng-src="/asset/gear/quest_ring_2_tex.png"/>{{ profileEdit.prof.ring1.name | translate }}</span>
+              <span style="position:relative;bottom:-10px;">
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': profileEdit.status.openRing1, 'glyphicon-chevron-right': !profileEdit.status.openRing1}"></i>
+              </span>
+            </uib-accordion-heading>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.ring1.one | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.ring1.two | translate }}</p>
+          </div>
+        </uib-accordion>
+
+      </div>
+
+      <div class="col-sm-4">
+        <uib-accordion close-others="false">
+          <div uib-accordion-group is-open="profileEdit.status.openNecklace">
+            <uib-accordion-heading>
+              <span><img ng-src="/asset/gear/necklace_19_tex.png"/>{{ profileEdit.prof.neck.name | translate }}</span>
+              <span style="position:relative;bottom:-10px;">
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': profileEdit.status.openNecklace, 'glyphicon-chevron-right': !profileEdit.status.openNecklace}"></i>
+              </span>
+            </uib-accordion-heading>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.neck.one | translate }}</p>
+          </div>
+        </uib-accordion>
+
+        <uib-accordion close-others="false">
+          <div uib-accordion-group is-open="profileEdit.status.openBrooch">
+            <uib-accordion-heading>
+              <span><img ng-src="/asset/gear/parts_magicweaponc8_tex.png"/>{{ profileEdit.prof.brooch.name | translate }}</span>
+              <span style="position:relative;bottom:-10px;">
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': profileEdit.status.openBrooch, 'glyphicon-chevron-right': !profileEdit.status.openBrooch}"></i>
+              </span>
+            </uib-accordion-heading>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.brooch.one | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.brooch.two | translate }}</p>
+          </div>
+        </uib-accordion>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <span><img ng-src="/asset/gear/underwear01_f_tex.png"/>{{ profileEdit.prof.inner.name | translate }}</span>
+            <span style="position:relative;bottom:-10px;"></span>
+          </div>
+        </div>
+
+        <uib-accordion close-others="false">
+          <div uib-accordion-group is-open="profileEdit.status.openBelt">
+            <uib-accordion-heading>
+              <span><img ng-src="/asset/gear/belt27_b_tex.png"/>{{ profileEdit.prof.belt.name | translate }}</span>
+              <span style="position:relative;bottom:-10px;">
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': profileEdit.status.openBelt, 'glyphicon-chevron-right': !profileEdit.status.openBelt}"></i>
+              </span>
+            </uib-accordion-heading>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.belt.one | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.belt.two | translate }}</p>
+          </div>
+        </uib-accordion>
+
+      </div>
+
+      <div class="col-sm-4">
+        <uib-accordion close-others="false">
+          <div uib-accordion-group is-open="profileEdit.status.openEarring2">
+            <uib-accordion-heading>
+              <span><img ng-src="/asset/gear/drop_earring_15_tex.png"/>{{ profileEdit.prof.ear2.name | translate }}</span>
+              <span style="position:relative;bottom:-10px;">
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': profileEdit.status.openEarring2, 'glyphicon-chevron-right': !profileEdit.status.openEarring2}"></i>
+              </span>
+            </uib-accordion-heading>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.ear2.one | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.ear2.two | translate }}</p>
+          </div>
+        </uib-accordion>
+
+        <uib-accordion close-others="false">
+          <div uib-accordion-group is-open="profileEdit.status.openArmor">
+            <uib-accordion-heading>
+              <span><img ng-src="/asset/gear/heavychest19_c_tex.png"/>{{ profileEdit.prof.armor.plus }}
+                {{ profileEdit.prof.armor.name | translate }}</span>
+              <span style="position:relative;bottom:-10px;">
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': profileEdit.status.openArmor, 'glyphicon-chevron-right': !profileEdit.status.openArmor}"></i>
+              </span>
+            </uib-accordion-heading>
+
+            {{ profileEdit.prof.armor.etch | translate }}
+            <br/>
+
+            <span>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.armor.baseSkill | translate }}</span>
+            <hr>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.armor.one | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.armor.two | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.armor.three | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.armor.four | translate }}</p>
+          </div>
+        </uib-accordion>
+
+        <uib-accordion close-others="false">
+          <div uib-accordion-group is-open="profileEdit.status.openGlove">
+            <uib-accordion-heading>
+              <span><img ng-src="/asset/gear/heavygauntlet19_c_tex.png"/>{{ profileEdit.prof.glove.plus }}
+                {{ profileEdit.prof.glove.name | translate }}</span>
+              <span style="position:relative;bottom:-10px;">
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': profileEdit.status.openGlove, 'glyphicon-chevron-right': !profileEdit.status.openGlove}"></i>
+              </span>
+            </uib-accordion-heading>
+
+            {{ profileEdit.prof.glove.etch | translate }}
+            <br/>
+
+            <hr>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.glove.one | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.glove.two | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.glove.three | translate }}</p>
+          </div>
+        </uib-accordion>
+
+        <uib-accordion close-others="false">
+          <div uib-accordion-group is-open="profileEdit.status.openRing2">
+            <uib-accordion-heading>
+              <span><img ng-src="/asset/gear/drop_ring_15_tex.png"/>{{ profileEdit.prof.ring2.name | translate }}</span>
+              <span style="position:relative;bottom:-10px;">
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': profileEdit.status.openRing2, 'glyphicon-chevron-right': !profileEdit.status.openRing2}"></i>
+              </span>
+            </uib-accordion-heading>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.ring2.one | translate }}</p>
+            <p>
+              <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+              {{ profileEdit.prof.ring2.two | translate }}</p>
+          </div>
+        </uib-accordion>
+      </div>
+
+    </div>
+
+  <div class="row" ng-show="profile.prof.twitch !== undefined">
+    <br/>
+    <center>
+      <p class="text-headline text-uppercase highlight">STREAM</p>
+      <twitch width="600" height="400" channel="{{ profile.prof.twitch }}"></twitch>
+      <iframe width="300" height="400" twitch-chat channel="{{ profile.prof.twitch }}"></iframe>
+    </center>
+    <br/>
+  </div> -->
+  <div class="row">
+    <center>
+      <p class="text-headline text-uppercase highlight">RECENT RANKINGS</p>
+    </center>
+    <table class="table table-hover">
+      <thead>
+        <th>Name</th>
+        <th>Party Composition</th>
+        <th>Boss</th>
+        <th>DPS (Personal)</th>
+        <th>DPS (Party)</th>
+        <th>Date</th>
+      </thead>
+      <tbody>
+
+        <tr ui-sref="rankDetailsParty({ rankId: rank._id })" class="animate-repeat" ng-repeat="rank in profile.recent">
+          <td style="vertical-align:middle">
+            <a ui-sref="rankDetailsParty({ rankId: rank._id })">{{ profile.prof.mainPlayer }}</a>
+          </td>
+          <td style="vertical-align:middle">
+            <img style="height:35px;width:35px;" ng-repeat="member in rank.members" title="{{ member.playerName }}" data-toggle="tooltip" tooltip ng-src="{{ profile.getClassImage(member.playerClass) }}"/>
+          </td>
+          <td style="vertical-align:middle">{{ profile.getBoss(rank.bossId, rank.areaId) }}</td>
+          <td ng-repeat="member in rank.members" ng-hide="member.playerName !== profile.prof.mainPlayer" style="vertical-align:middle">{{ member.playerDps.toLocaleString() }}</td>
+          <td style="vertical-align:middle">{{ rank.partyDps.toLocaleString() }}</td>
+          <td style="vertical-align:middle">{{ rank.trueCreatedOn }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <center>
+      <p class="text-headline text-uppercase highlight">PERSONAL RECORDS</p>
+    </center>
+    <!-- <div class='well'>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="input-group col-sm-12">
+            <select class="form-control" id="boss" ng-model="profile.bossSetting">
+              <option value="">All Bosses</option>
+              <optgroup label="Dreadspire III (DS3)">
+                <option value="886.88518">Floor 16: Hrathgol</option>
+                <option value="886.88516">Floor 18: Lokmar Sorgalur</option>
+                <option value="886.88519">Floor 19: Meldita</option>
+                <option value="886.88601">Floor 20: Koleogg</option>
+                <option value="886.88602">Floor 21: Kaprima</option>
+                <option value="886.885200">Floor 22: Shandra Manaya</option>
+              </optgroup>
+              <optgroup label="Demokron Factory Normal (DFNM)">
+                <option value="767.46704">Verno</option>
+              </optgroup>
+              <optgroup label="Demokron Factory Hard (DFHM)">
+                <option value="467.46701">Nightmare Vera</option>
+                <option value="467.46703">Nightmare Odon</option>
+                <option value="467.46704">Nightmare Verno</option>
+              </optgroup>
+              <optgroup label="Shadow Sanguinary Normal (SSNM)">
+                <option value="768.1000">Pahoegar</option>
+                <option value="768.3000">Imperator</option>
+              </optgroup>
+              <optgroup label="Shadow Sanguinary Hard (SSHM)">
+                <option value="468.1000">Nightmare Pahoegar</option>
+                <option value="468.3000">Nightmare Imperator</option>
+              </optgroup>
+              <optgroup label="Manglemire (MM)">
+                <option value="470.1000">Manglemore</option>
+              </optgroup>
+              <optgroup label="Sky Cruiser Endeavor (SCHM)">
+                <option value="916.91650">Nightmare Putrion</option>
+                <option value="916.91606">Nightmare Perimos</option>
+                <option value="916.1000">Nightmare Darkan</option>
+              </optgroup>
+              <optgroup label="Lilith's Castle Normal (LLNM)">
+                <option value="769.76901">Nightmare</option>
+                <option value="769.76902">Waxpider</option>
+                <option value="769.76903">Lilith</option>
+              </optgroup>
+              <optgroup label="Lilith's Castle Hard (LLHM)">
+                <option value="969.76901">Nightmare Nightmare</option>
+                <option value="969.76902">Nightmare Waxpider</option>
+                <option value="969.76903">Nightmare Lilith</option>
+              </optgroup>
+              <optgroup label="Rakelith's Ruins Normal (RRNM)">
+                <option value="770.1000">Revived Atrocitas</option>
+                <option value="770.2000">Revived Malgarios</option>
+                <option value="770.3000">Rakelith</option>
+              </optgroup>
+              <optgroup label="Rakelith's Ruins Hard (RRHM)">
+                <option value="970.1000">Revived Nightmare Atrocitas</option>
+                <option value="970.2000">Revived Nightmare Malgarios</option>
+                <option value="970.3000">Nightmare Rakelith</option>
+              </optgroup>
+            </select>
+            <span class="btn btn-default" ng-click="profile.setFilters()">Search</span>
+            <span ng-hide="profile.classSetting === 'Mystic'">
+          <input type="image" style="height:35px;width:35px;" ng-show="profile.healerSetting !== 'P'" src="/asset/classes/priest-de.png" ng-click="profile.chooseHeal('P')">
+          <input type="image" style="height:35px;width:35px;" ng-show="profile.healerSetting === 'P'" src="/asset/classes/priest-sel.png" ng-click="profile.chooseHeal('P')">
+        </span>
+
+        <input type="image" style="height:35px;width:35px;" ng-show="profile.healerSetting !== 'MP'" ng-src="/asset/classes/duos2-de.png" ng-click="profile.chooseHeal('MP')">
+        <input type="image" style="height:35px;width:35px;" ng-show="profile.healerSetting === 'MP'" ng-src="/asset/classes/duos2-sel.png" ng-click="profile.chooseHeal('MP')">
+
+        <span ng-hide="profile.classSetting === 'Priest'">
+          <input type="image" style="height:35px;width:35px;" ng-show="profile.healerSetting !== 'M'" ng-src="/asset/classes/mystic-de.png" ng-click="profile.chooseHeal('M')">
+          <input type="image" style="height:35px;width:35px;" ng-show="profile.healerSetting === 'M'" ng-src="/asset/classes/mystic-sel.png" ng-click="profile.chooseHeal('M')">
+        </span>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <span class="btn btn-default btn-block" ng-click="profile.setFilters()">Search</span>
+        </div>
+      </div>
+    </div> -->
+    <br/>
+
+    <!-- <div ng-show="profile.bossSetting !== ''" ng-repeat="top in profile.rankings | filter: profile.bossSetting | limitTo: 1" class="text-center">
+      <span>{{ profile.getBoss(top.bossId, top.areaId) }}</span>
+      <br/>
+      <span class="text-headline2">
+        <a ui-sref="rankDetailsParty({ rankId: top.encId })">Personal Best :
+          {{ top.mainDps }}
+          DPS</a>
+      </span>
+    </div>
+    <br/> -->
+    <table class="table table-hover">
+      <thead>
+        <th>Name</th>
+        <th>Boss</th>
+        <th>Class</th>
+        <th>Server</th>
+        <th>DPS</th>
+        <th>Date</th>
+      </thead>
+      <tbody>
+
+        <tr ui-sref="rankDetailsParty({ rankId: rank.encId })" class="animate-repeat" dir-paginate="rank in profile.rankings | itemsPerPage: profile.perPage" total-items="profile.rankingsCount" current-page="profile.page" pagination-id="solo">
+          <td style="vertical-align:middle">
+            <a ui-sref="rankDetailsParty({ rankId: rank.encId })">
+              {{ rank.mainPlayer }}
+            </a>
+          </td>
+          <td style="vertical-align:middle">{{ profile.getBoss(rank.bossId, rank.areaId) }}</td>
+          <td>{{ rank.mainClass }}
+            <span ng-show="rank.dpsStance === 'D'">(DPS)</span>
+            <span ng-show="rank.dpsStance === 'T'">(TANK)</span>
+          </td>
+          <td>{{ rank.mainServer }}</td>
+          <td style="vertical-align:middle">{{ rank.mainDps.toLocaleString() }}</td>
+          <td style="vertical-align:middle">{{ rank.trueCreatedOn }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <center>
+      <dir-pagination-controls pagination-id="solo" on-page-change="profile.pageChanged(newPageNumber)"></dir-pagination-controls>
+    </center>
+  </div>
+</div>

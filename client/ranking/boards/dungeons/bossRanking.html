@@ -21,11 +21,11 @@
             <select class="form-control" id="region" ng-model="bossRanking.regionSetting">
               <option value="">All Regions</option>
               <option value="NA">North America</option>
-              <option value="EU">Europe</option>
+              <!-- <option value="EU">Europe</option>
               <option value="RU">Russia</option>
               <option value="KR">Korea</option>
               <option value="JP">Japan</option>
-              <option value="TW">Taiwan</option>
+              <option value="TW">Taiwan</option> -->
             </select>
           </div>
         </div>
@@ -44,7 +44,7 @@
                 <option value="Highwatch">Highwatch</option>
                 <option value="Ascension Valley">Ascension Valley</option>
               </optgroup>
-              <optgroup label="Europe (EU)">
+              <!-- <optgroup label="Europe (EU)">
                 <option value="Killian">Killian</option>
                 <option value="Fraya">Fraya</option>
                 <option value="Hasmina">Hasmina</option>
@@ -77,17 +77,17 @@
               </optgroup>
               <optgroup label="Taiwan (TW)">
                 <option value="提雅拉尼亞">提雅拉尼亞</option>
-              </optgroup>
+              </optgroup> -->
             </select>
           </div>
         </div>
 
         <div class="col-sm-3">
-          <label for="slaying">SLAYING</label>
+          <label for="slaying"><img src="/asset/items/slaying.png" style="width:25px;height:25px;" /> SLAYING</label>
           <br />
-          <input id="slaying" type="image" style="height:40px;width:40px;" ng-show="bossRanking.slayingSetting === 'Y'" src="/asset/items/slaying.png" ng-click="bossRanking.chooseSlaying('N')">
-          <input id="slaying" type="image" style="height:40px;width:40px;" ng-show="bossRanking.slayingSetting === 'N'" src="/asset/tanker.png" ng-click="bossRanking.chooseSlaying('')">
-          <input id="slaying" type="image" style="height:40px;width:40px;" ng-show="bossRanking.slayingSetting === ''" src="/asset/dpser.png" ng-click="bossRanking.chooseSlaying('Y')">
+          <i class="fa fa-check fa-2x" ng-show="bossRanking.slayingSetting === 'Y'" ng-click="bossRanking.chooseSlaying('N')" aria-hidden="true"></i>
+          <i class="fa fa-times fa-2x" ng-show="bossRanking.slayingSetting === 'N'" ng-click="bossRanking.chooseSlaying('')" aria-hidden="true"></i>
+          <i class="fa fa-universal-access fa-2x" ng-show="bossRanking.slayingSetting === ''" ng-click="bossRanking.chooseSlaying('Y')" aria-hidden="true"></i>
         </div>
 
       </div>
@@ -164,7 +164,7 @@
       Search settings successfully saved!</div>
   </div>
 
-<center>
+<!-- <center>
   <div class="row">
     <div class="col-sm-12">
       <span class="text-branding text-jumbo text-center highlight"><i class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i> PREMIUM <i class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i></span>
@@ -223,7 +223,7 @@
     <br />
   </div>
   <dir-pagination-controls pagination-id="premium" on-page-change="bossRanking.pageChangedPremium(newPageNumber)"></dir-pagination-controls>
-</center>
+</center> -->
 
   <center>
     <div class="row">
@@ -261,9 +261,11 @@
         current-page="bossRanking.page"
         pagination-id="solo">
         <td>
-          <i ng-show="ranking.freebie === true" class="fa fa-bolt fa-1x" aria-hidden="true" title="Top Rank: {{ ranking.region }} {{ ranking.mainClass }} - {{ bossRanking.getBoss(ranking.bossId, ranking.areaId) }}" data-toggle="tooltip" tooltip></i>
+          <i ng-show="ranking.freebie === true" class="fa fa-bolt fa-1x" aria-hidden="true" title="Top 5: {{ ranking.mainClass }} - {{ bossRanking.getBoss(ranking.bossId, ranking.areaId) }}" data-toggle="tooltip" tooltip></i>
+          <img ng-show="ranking.slaying === 'Y'" src="/asset/items/slaying.png" style="width:20px;height:20px;" title="Slaying" data-toggle="tooltip" tooltip />
           <a ui-sref="premium"><i title="Premium User" data-toggle="tooltip" tooltip ng-show="ranking.premium === true" class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i></a>
           <a ui-sref="rankDetailsParty({ rankId: ranking.encId })">{{ ranking.mainPlayer }}</a>
+          <a ui-sref="user({ server: ranking.mainServer, player: ranking.mainPlayer })"><i class="fa fa-user fa-1x" aria-hidden="true"></i></a>
         </td>
         <td>{{ ranking.mainClass }}
           <span ng-show="ranking.dpsStance === 'D'">(DPS)</span>

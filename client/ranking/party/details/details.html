@@ -75,7 +75,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="member in rankDetailsParty.rank.members | orderBy: '-playerDps'">
-            <td style="vertical-align:middle"><i ng-show="member.premium === true" class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i> {{ member.playerName }}</td>
+            <td style="vertical-align:middle"><a ui-sref="user({ server: member.playerServer, player: member.playerName })"><i ng-show="member.premium === true" class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i> {{ member.playerName }}</a></td>
             <td style="vertical-align:middle"><img ng-src="{{rankDetailsParty.getClassImage(member.playerClass)}}" class="item-resize" title="{{ member.playerClass }}" data-toggle="tooltip" tooltip></td>
             <td style="vertical-align:middle"><img class="item-resize" ng-src="/asset/dpser.png" ng-show="member.playerClass === 'Brawler' && member.aggro < 30 || member.playerClass === 'Lancer' && member.aggro < 30" title="This player was detected to be using a DPS/backcrit-focused setup instead of tanking-focused setup." data-toggle="tooltip" tooltip>
               <img class="item-resize" ng-src="/asset/tanker.png" ng-show="member.playerClass === 'Brawler' && member.aggro > 30 || member.playerClass === 'Lancer' && member.aggro > 30" title="This player was detected to be the primary tank of the party." data-toggle="tooltip" tooltip>

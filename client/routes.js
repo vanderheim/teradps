@@ -56,16 +56,8 @@ angular.module('tera').config(function($urlRouterProvider, $stateProvider,
       template: '<rank-details></rank-details>',
     })
     .state('user', {
-      url: '/{server}/:player',
+      url: '/:server?player',
       template: '<profile></profile>',
-    })
-    .state('userEdit', {
-      url: '/edit/{server}/:player',
-      template: '<profile-edit></profile-edit>',
-    })
-    .state('charList', {
-      url: '/char/edit/:userId',
-      template: '<characters></characters>',
     });
 
   $urlRouterProvider.otherwise("/");

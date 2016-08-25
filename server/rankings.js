@@ -214,17 +214,17 @@ Meteor.publish("playerOne", function(options, searchId, serverId) {
   }
 
   let selector = {
-    name: {
+    mainPlayer: {
       '$regex': searchId || '' + '.*',
       '$options': 'i'
     },
-    server: {
+    mainServer: {
       '$regex': serverId || '' + '.*',
       '$options': 'i'
     }
   };
 
-  return PremiumUsers.find(selector, options);
+  return PersonalRankings.find(selector, options);
 });
 
 Meteor.publish("characterLookUp", function(options, userId) {

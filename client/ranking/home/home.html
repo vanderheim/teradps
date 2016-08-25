@@ -15,13 +15,13 @@
   <div class="col-sm-3">
     <img src=/asset/1757268.png />
   </div>
-  <div class="col-sm-6">
+  <!-- <div class="col-sm-6">
     <h5 class="page-header animated infinite pulse">Welcome to TeraDPS!</h5>
     <p>Welcome to TeraDPS!</p>
-  </div>
-  <div class="col-sm-3">
+  </div> -->
+  <div class="col-sm-9">
     <h5 class="page-header">What is TeraDPS?</h5>
-    <p>TeraDPS is a web application that was created to allow players to share dps meter data with other people and improve themselves by comparing and analyzing it.</p>
+    <p>TeraDPS is a web application that was created to allow players to share dps meter data with other people and improve themselves by comparing and analyzing it. TeraDPS is no longer under active development, but the source code is available on <a href="http://github.com/kiritsuzu" target="_blank">Nick's GitHub</a> for those who are interested in viewing it or contributing to it. This page is to be used to demonstrate proof of concept.</p>
   </div>
 </div>
 
@@ -29,7 +29,7 @@
     <div class="col-sm-12">
       <table class="table table-hover">
         <thead>
-          <th>Region & Party</th>
+          <th>Party Composition</th>
           <th>Server</th>
           <th>Boss</th>
           <th>DPS</th>
@@ -39,7 +39,7 @@
 
             <tr class="animate-repeat" ng-repeat="rank in home.recent">
             <td style="vertical-align:middle">
-              <a ui-sref="premium"><i class="fa fa-star fa-3x fa-spin" title="Premium Ranking" data-toggle="tooltip" style="position: relative; bottom: -11px;" ng-show="rank.premium === true" aria-hidden="true"></i></a>  <a ui-sref="rankDetailsParty({ rankId: rank._id })"><img style="height:25px;width:38px;" ng-src="{{ home.getRegionFlag(rank.commonServer) }}"><img style="height:50px;width:50px;" ng-repeat="member in rank.members" title="{{ member.playerName }}" data-toggle="tooltip" tooltip ng-src="{{ home.getClassImage(member.playerClass) }}"/>
+              <a ui-sref="premium"><i class="fa fa-star fa-3x fa-spin" title="Premium Ranking" data-toggle="tooltip" style="position: relative; bottom: -11px;" ng-show="rank.premium === true" aria-hidden="true"></i></a>  <a ui-sref="rankDetailsParty({ rankId: rank._id })"><img style="height:50px;width:50px;" ng-repeat="member in rank.members" title="{{ member.playerName }}" data-toggle="tooltip" tooltip ng-src="{{ home.getClassImage(member.playerClass) }}"/>
             </a>
             </td>
             <td style="vertical-align:middle">{{ rank.commonServer }}</td>

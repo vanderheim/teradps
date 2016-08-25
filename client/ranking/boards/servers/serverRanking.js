@@ -24,7 +24,6 @@ angular.module('tera').directive('serverRanking', function() {
       this.searchPlayer = SettingsService.players;
       this.searchRegion = '';
       this.searchHeal = SettingsService.healers;
-      this.searchSlaying = '';
       this.dateProperty = -1;
       this.dpsProperty = -1;
       this.datePropertyPremium = -1;

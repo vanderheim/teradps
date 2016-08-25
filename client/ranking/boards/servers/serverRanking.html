@@ -34,7 +34,7 @@
                 <option value="886.88602">Floor 21: Kaprima</option>
                 <option value="886.885200">Floor 22: Shandra Manaya</option>
               </optgroup>
-              <optgroup label="Demokron Factory Normal (DFNM)">
+              <!-- <optgroup label="Demokron Factory Normal (DFNM)">
                 <option value="767.46704">Verno</option>
               </optgroup>
               <optgroup label="Demokron Factory Hard (DFHM)">
@@ -77,17 +77,17 @@
                 <option value="970.1000">Revived Nightmare Atrocitas</option>
                 <option value="970.2000">Revived Nightmare Malgarios</option>
                 <option value="970.3000">Nightmare Rakelith</option>
-              </optgroup>
+              </optgroup> -->
             </select>
           </div>
         </div>
 
         <div class="col-sm-4">
-          <label for="slaying">SLAYING</label>
+          <label for="slaying"><img src="/asset/items/slaying.png" style="width:25px;height:25px;" /> SLAYING</label>
           <br />
-          <input id="slaying" type="image" style="height:40px;width:40px;" ng-show="serverRanking.slayingSetting === 'Y'" src="/asset/items/slaying.png" ng-click="serverRanking.chooseSlaying('N')">
-          <input id="slaying" type="image" style="height:40px;width:40px;" ng-show="serverRanking.slayingSetting === 'N'" src="/asset/tanker.png" ng-click="serverRanking.chooseSlaying('')">
-          <input id="slaying" type="image" style="height:40px;width:40px;" ng-show="serverRanking.slayingSetting === ''" src="/asset/dpser.png" ng-click="serverRanking.chooseSlaying('Y')">
+          <i class="fa fa-check fa-2x" ng-show="serverRanking.slayingSetting === 'Y'" ng-click="serverRanking.chooseSlaying('N')" aria-hidden="true"></i>
+          <i class="fa fa-times fa-2x" ng-show="serverRanking.slayingSetting === 'N'" ng-click="serverRanking.chooseSlaying('')" aria-hidden="true"></i>
+          <i class="fa fa-universal-access fa-2x" ng-show="serverRanking.slayingSetting === ''" ng-click="serverRanking.chooseSlaying('Y')" aria-hidden="true"></i>
         </div>
 
       </div>
@@ -166,7 +166,7 @@
   </div>
   <br>
 
-  <center>
+  <!-- <center>
     <div class="row">
       <div class="col-sm-12">
         <span class="text-branding text-jumbo text-center highlight"><i class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i> PREMIUM <i class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i></span>
@@ -225,7 +225,7 @@
         <br />
     </div>
     <dir-pagination-controls pagination-id="premium" on-page-change="serverRanking.pageChangedPremium(newPageNumber)"></dir-pagination-controls>
-  </center>
+  </center> -->
 
     <center>
       <div class="row">
@@ -264,9 +264,11 @@
         total-items="serverRanking.rankingsCount"
         pagination-id="normal">
         <td>
-          <i ng-show="ranking.freebie === true" class="fa fa-bolt fa-1x" aria-hidden="true" title="Top Rank: {{ ranking.region }} {{ ranking.mainClass }} - {{ serverRanking.getBoss(ranking.bossId, ranking.areaId) }}" data-toggle="tooltip" tooltip></i>
+          <i ng-show="ranking.freebie === true" class="fa fa-bolt fa-1x" aria-hidden="true" title="Top 5: {{ ranking.mainClass }} - {{ serverRanking.getBoss(ranking.bossId, ranking.areaId) }}" data-toggle="tooltip" tooltip></i>
+          <img ng-show="ranking.slaying === 'Y'" src="/asset/items/slaying.png" style="width:20px;height:20px;" title="Slaying" data-toggle="tooltip" tooltip />
           <a ui-sref="premium"><i title="Premium User" data-toggle="tooltip" tooltip ng-show="ranking.premium === true" class="fa fa-star fa-1x fa-spin" aria-hidden="true"></i></a>
           <a ui-sref="rankDetailsParty({ rankId: ranking.encId })">{{ ranking.mainPlayer }}</a>
+          <a ui-sref="user({ server: ranking.mainServer, player: ranking.mainPlayer })"><i class="fa fa-user fa-1x" aria-hidden="true"></i></a>
         </td>
         <td>{{ ranking.mainClass }}
           <span ng-show="ranking.dpsStance === 'D'">(DPS)</span>
